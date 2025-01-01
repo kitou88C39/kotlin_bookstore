@@ -1,3 +1,3 @@
 package com.devtiro.bookstore.domain
 
-class Book (var id: Long?, var name: String, var age: Int, var description: String, var image: String)
+class Book (var isbn: String, var title: String, var description: String, var image: String, var author: Author)
