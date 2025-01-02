@@ -1,3 +1,5 @@
 package com.devtiro.bookstore.repositories
 
-interface AuthorRepository{}
+interface AuthorRepository{
+    
+}
