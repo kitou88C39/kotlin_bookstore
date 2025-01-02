@@ -55,6 +55,12 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.2.20</version> <!-- 例としてバージョンを指定 -->
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
