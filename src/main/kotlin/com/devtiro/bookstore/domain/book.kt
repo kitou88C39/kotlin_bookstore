@@ -21,5 +21,7 @@ data class Book (
     @Column(name="image")
     var image: String,
 
-    @Column(name="author")
-    var author: Author)
+    @ManyToOne(cascade=[CascadeType.DETACH])
+    @JoinColumn(name="author_id")
+    var author: Author
+    )
