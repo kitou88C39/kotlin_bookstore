@@ -2,11 +2,13 @@ package com.devtiro.bookstore.domain
 
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
+import jakarta.persistence.GeneratedValue
 import jakarta.persistence.Id
 import jakarta.persistence.Table
 
 @Entity
 @Table(name="author")
+@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "author_id_seq")
 data class Author (
     @Id
     @Column(name="id")
