@@ -1,5 +1,7 @@
 package com.devtiro.bookstore.repositories
 
-interface AuthorRepository{
-    
+import org.springframework.data.jpa.repositories.JpaRepository
+
+interface AuthorRepository : JpaRepository{
+
 }
