@@ -7,7 +7,7 @@ import jakarta.persistence.Table
 
 @Entity
 @Table(name="books")
-data class Book (
+data class BookEntity (
     @Id
     @Column(name="isbn")
     var isbn: String,
