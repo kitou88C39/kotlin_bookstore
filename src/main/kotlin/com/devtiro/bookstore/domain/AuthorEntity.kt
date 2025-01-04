@@ -9,7 +9,7 @@ import jakarta.persistence.Table
 @Entity
 @Table(name="author")
 @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "author_id_seq")
-data class Author (
+data class AuthorEntity (
     @Id
     @Column(name="id")
     val id: Long?,
