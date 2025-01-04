@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repositories.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface BookRepository : JpaRepository<Author, Long?>{
+interface BookRepository : JpaRepository<Book, Long?>{
 
 }
