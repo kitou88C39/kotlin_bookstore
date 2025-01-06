@@ -5,5 +5,5 @@ data class BookDto(
     var title: String,
     var description: String,
     var image: String,
-    var author: Author
+    var author: AuthorDto
 )
