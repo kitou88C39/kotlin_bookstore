@@ -1,3 +1,8 @@
 package com.devtiro.bookstore.services
 
-interface AuthorService{}
+import com.devtiro.bookstore.domain.entities.AuthorEntity
+
+interface AuthorService{
+
+    fun save(AuthorEntity: AuthorEntity): AuthorEntity
+}
