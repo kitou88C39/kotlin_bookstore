@@ -1,8 +1,10 @@
-package com.devtiro.bookstore.services
+package com.devtiro.bookstore.services.impl
 
-import com.devtiro.bookstore.domain.entities.AuthorEntity
+import com.devtiro.bookstore.services.AuthorService
 
-interface AuthorServiceImpl{
+class AuthorServiceImpl: AuthorService{
 
-    fun save(AuthorEntity: AuthorEntity): AuthorEntity
+   override fun save(AuthorEntity: AuthorEntity): AuthorEntity{
+    
+   }
 }
