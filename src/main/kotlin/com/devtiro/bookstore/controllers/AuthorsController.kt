@@ -8,7 +8,7 @@ import org.springframework.web.bind.annoatation.RestController
 class AuthorController {
 
     @PostMapping(path = ["/v1/authors"])
-    fun createAuthor(@RequestBody author: Author){
+    fun createAuthor(@RequestBody AuthorEntity: AuthorDto): AuthorDto{
 
     }
 }
