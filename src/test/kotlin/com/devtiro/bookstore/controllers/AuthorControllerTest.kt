@@ -9,8 +9,10 @@ import org.springframework.test.web.servlet.post
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class AuthorControllerTest @Autowired constructor(private mockMvc: MockMvc){
-
+class AuthorControllerTest @Autowired constructor(
+    private val mockMvc: MockMvc,
+    @MockBean val authorService: AuthorService
+    ) {
     val objectMapper = ObjectMapper()
 
     @Test
