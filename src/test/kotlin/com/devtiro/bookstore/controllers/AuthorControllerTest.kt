@@ -18,8 +18,18 @@ class AuthorControllerTest @Autowired constructor(
 
     @Test
     fun `test that create Author saves the Author`(){
-
-
+        mockMvc.post("/v1/authors"){
+            contentType = MediaType.APPLICATION_JSON
+            accept = MediaType.APPLICATION_JSON
+            content = objectMapper.writeValueAsString(
+                AuthorDto(
+                    id = null,
+                    name = "John Doe",
+                    age = 30,
+                    description = "author-image.jpeg",
+                    image = "some-description.jpeg"
+                )
+            )
     }
     @Test
     fun `test that create Author returns a HTTP 201 status on a successful create`(){
