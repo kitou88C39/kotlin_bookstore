@@ -38,13 +38,7 @@ class AuthorControllerTest @Autowired constructor(
             contentType = MediaType.APPLICATION_JSON
             accept = MediaType.APPLICATION_JSON
             content = objectMapper.writeValueAsString(
-                AuthorDto(
-                    id = null,
-                    name = "John Doe",
-                    age = 30,
-                    description = "author-image.jpeg",
-                    image = "some-description.jpeg"
-                )
+                testAuthorDtoAuthorDto()
             )
     }
     val expected = AuthorEntity(
@@ -61,14 +55,8 @@ class AuthorControllerTest @Autowired constructor(
             contentType = MediaType.APPLICATION_JSON
             accept = MediaType.APPLICATION_JSON
             content = objectMapper.writeValueAsString(
-                AuthorDto(
-                    id = null,
-                    name = "John Doe",
-                    age = 30,
-                    description = "author-image.jpeg",
-                    image = "some-description.jpeg"
+                testAuthorDtoAuthorDto()
                 )
-            )
         }.andExpect {
             status { isCreated() }
         }
