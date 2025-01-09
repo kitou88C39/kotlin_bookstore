@@ -4,6 +4,7 @@ import org.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.AutoConfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.post
 
@@ -13,8 +14,16 @@ class AuthorControllerTest @Autowired constructor(
     private val mockMvc: MockMvc,
     @MockBean val authorService: AuthorService
     ) {
+
     val objectMapper = ObjectMapper()
 
+    @BeforeEach
+    fun beforeEach()
+    every {
+        authorService.save(any())
+    } answers {
+        firstArg()
+    }
 
     @Test
     fun `test that create Author saves the Author`(){
