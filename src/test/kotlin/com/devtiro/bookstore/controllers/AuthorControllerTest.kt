@@ -15,12 +15,17 @@ class AuthorControllerTest @Autowired constructor(
     ) {
     val objectMapper = ObjectMapper()
 
+
+    @Test
+    fun `test that create Author saves the Author`(){
+
+
+    }
     @Test
     fun `test that create Author returns a HTTP 201 status on a successful create`(){
         mockMvc.post("/v1/authors"){
             contentType = MediaType.APPLICATION_JSON
             accept = MediaType.APPLICATION_JSON
-    val objectMapper = ObjectMapper()
             content = objectMapper.writeValueAsString(
                 AuthorDto(
                     id = null,
