@@ -13,8 +13,9 @@ import org.springframework.web.bind.annoatation.RestController
 class AuthorController(private val AuthorService: AuthorService) {
 
     @PostMapping(path = ["/v1/authors"])
-    fun createAuthor(@RequestBody authorDto: AuthorDto): AuthorDto{
-        return authorService.save(authorDto.toAtuthorEntity()
+    fun createAuthor(@RequestBody authorDto: AuthorDto): ResponseEntity<AuthorDto>{
+        val createAuthor = authorService.save(authorDto.toAtuthorEntity()
         ).toAtuthorDto()
+        return ResponseEntity(createAuthor, HttpStatus.CREATED)
     }
 }
