@@ -31,6 +31,14 @@ class AuthorControllerTest @Autowired constructor(
                 )
             )
     }
+    val expected = AuthorEntity(
+        id = null,
+        name = "John Doe",
+        age = 30,
+        description = "author-image.jpeg",
+        image = "some-description.jpeg"
+    )
+}
     @Test
     fun `test that create Author returns a HTTP 201 status on a successful create`(){
         mockMvc.post("/v1/authors"){
@@ -50,3 +58,4 @@ class AuthorControllerTest @Autowired constructor(
         }
     }
 }
+    
