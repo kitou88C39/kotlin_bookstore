@@ -62,4 +62,3 @@ class AuthorControllerTest @Autowired constructor(
         }
     }
 }
-    
