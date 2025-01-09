@@ -28,6 +28,8 @@ class AuthorControllerTest @Autowired constructor(private mockMvc: MockMvc){
                     image = "some-description.jpeg"
                 )
             )
+        }.andExpect {
+            status { isCreated() }
         }
     }
 }
