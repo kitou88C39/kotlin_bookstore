@@ -13,7 +13,10 @@ class AuthorControllerTest @Autowired constructor(private mockMvc: MockMvc){
 
     @Test
     fun `test that create Author returns a HTTP 201 status on a successful create`(){
-        mockMvc.post("/v1/authors")
+        mockMvc.post("/v1/authors"){
+            contentType = MediaType.APPLICATION_JSON
+            accept = MediaType.APPLICATION_JSON
+        }
     }
 
 }
