@@ -19,9 +19,15 @@ class AuthorControllerTest @Autowired constructor(private mockMvc: MockMvc){
             contentType = MediaType.APPLICATION_JSON
             accept = MediaType.APPLICATION_JSON
     val objectMapper = ObjectMapper()
-            content = objectMapper.writeValueAsString()
-            
+            content = objectMapper.writeValueAsString(
+                AuthorDto(
+                    id = null,
+                    name = "John Doe",
+                    age = 30,
+                    description = "author-image.jpeg",
+                    image = "some-description.jpeg"
+                )
+            )
         }
     }
-
 }
