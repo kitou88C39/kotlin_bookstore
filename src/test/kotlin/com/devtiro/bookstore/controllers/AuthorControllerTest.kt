@@ -18,6 +18,13 @@ class AuthorControllerTest @Autowired constructor(
 
     @Test
     fun `test that create Author saves the Author`(){
+        every {
+            authorService.save(any())
+        } answers {
+            firstArg()
+        }
+
+
         mockMvc.post("/v1/authors"){
             contentType = MediaType.APPLICATION_JSON
             accept = MediaType.APPLICATION_JSON
