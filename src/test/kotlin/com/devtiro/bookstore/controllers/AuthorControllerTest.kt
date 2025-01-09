@@ -5,4 +5,11 @@ import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class AuthorControllerTest{}
+class AuthorControllerTest @Autowired constructor(val mockMvc: MockMvc){
+
+    @Test
+    fun `test that create Author returns a HTTP 201 status on a successful create`(){
+        a
+    }
+
+}
