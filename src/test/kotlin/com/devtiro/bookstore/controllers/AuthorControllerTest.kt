@@ -19,7 +19,7 @@ private const val AUTHORS_BASE_URL = "/v1/authors"
 class AuthorControllerTest @Autowired constructor(
     private val mockMvc: MockMvc,
     @MockBean val authorService: AuthorService
-    ) {
+    ) 
 
     val objectMapper = ObjectMapper()
 
@@ -38,7 +38,6 @@ class AuthorControllerTest @Autowired constructor(
         } answers {
             firstArg()
         }
-
 
         mockMvc.post("AUTHORS_BASE_URL"){
             contentType = MediaType.APPLICATION_JSON
@@ -68,9 +67,6 @@ class AuthorControllerTest @Autowired constructor(
         mockMvc.get("AUTHORS_BASE_URL"){
             contentType = MediaType.APPLICATION_JSON
             accept = MediaType.APPLICATION_JSON
-            content = objectMapper.writeValueAsString(
-                testAuthorDtoAuthorDto()
-                )
         }.andExpect {
             status { isOk() }
             content { json ( "[]")}
@@ -78,7 +74,7 @@ class AuthorControllerTest @Autowired constructor(
     }
 
     @Test
-    fun `test that list returns an empty list and HTTP 200 when no author in the database`(){
+    fun `test that list returns author and HTTP 200 when author in the database`(){
         every {
             authorService.list()
         } answers {
