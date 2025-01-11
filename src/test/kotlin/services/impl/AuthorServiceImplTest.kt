@@ -1,5 +1,7 @@
 package com.devtiro.bookstore.services.impl
 
+import com.devtiro.bookstore.testAuthorEntityA
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annoatation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
