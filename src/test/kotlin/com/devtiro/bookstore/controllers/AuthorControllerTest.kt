@@ -78,7 +78,7 @@ class AuthorControllerTest @Autowired constructor(
         every {
             authorService.list()
         } answers {
-            enptyList()
+            ListOf(testAuthorEntityA(1))
         }
 
         mockMvc.get("AUTHORS_BASE_URL"){
@@ -86,6 +86,10 @@ class AuthorControllerTest @Autowired constructor(
             accept = MediaType.APPLICATION_JSON
         }.andExpect {
             status { isOk() }
-            content { json ( "[]")}
+            content { jsonPath ( "$[0].id", equalTo(1))}
+            content { jsonPath ( "$[0].name", equalTo("John Doe"))}
+            content { jsonPath ( "$[0].age", equalTo(30))}
+            content { jsonPath ( "$[0].description", equalTo("Some description"))}
+            content { jsonPath ( "$[0].image", equalTo("author-image.jpeg"))}
         }
 }
