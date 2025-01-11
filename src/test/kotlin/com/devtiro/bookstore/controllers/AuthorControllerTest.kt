@@ -73,7 +73,14 @@ class AuthorControllerTest @Autowired constructor(
                 )
         }.andExpect {
             status { isOk() }
-            content { json ( "{}")}
+            content { json ( "[]")}
         }
     }
+    @Test
+    fun `test that list returns an empty list and HTTP 200 when no author in the database`(){
+        every {
+            authorService.list()
+        } answers {
+            enptyList()
+        }
 }
