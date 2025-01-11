@@ -8,7 +8,7 @@ fun testAuthorDtoA(id: Long? = null) = AuthorDto(
     image = "some-description.jpeg"
     )
 
-    fun testAuthorDtoA(id: Long? = null) = AuthorEntity(
+fun testAuthorEntityA(id: Long? = null) = AuthorEntity(
     id = id,
     name = "John Doe",
     age = 30,
