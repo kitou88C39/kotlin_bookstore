@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.get
 import org.springframework.test.web.servlet.post
 
-private const val AUTHORS_BASE_UR = "/v1/authors"
+private const val AUTHORS_BASE_URL = "/v1/authors"
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -40,7 +40,7 @@ class AuthorControllerTest @Autowired constructor(
         }
 
 
-        mockMvc.post("/v1/authors"){
+        mockMvc.post("AUTHORS_BASE_URL"){
             contentType = MediaType.APPLICATION_JSON
             accept = MediaType.APPLICATION_JSON
             content = objectMapper.writeValueAsString(
@@ -59,14 +59,15 @@ class AuthorControllerTest @Autowired constructor(
     
 @Test
     fun `test that list returns an empty list and HTTP 200 when no author in the data`(){
-        mockMvc.get("/v1/authors"){
+        mockMvc.get("AUTHORS_BASE_URL"){
             contentType = MediaType.APPLICATION_JSON
             accept = MediaType.APPLICATION_JSON
             content = objectMapper.writeValueAsString(
                 testAuthorDtoAuthorDto()
                 )
         }.andExpect {
-            status { isCreated() }
+            status { isOk() }
+            content { json ( "{}")}
         }
     }
 }
