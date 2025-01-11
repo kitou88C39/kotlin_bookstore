@@ -18,4 +18,10 @@ class AuthorController(private val AuthorService: AuthorService) {
         ).toAtuthorDto()
         return ResponseEntity(createAuthor, HttpStatus.CREATED)
     }
+    @GetMapping(path = ["/v1/authors"])
+    fun createAuthor(@RequestBody authorDto: AuthorDto): ResponseEntity<AuthorDto>{
+        val createAuthor = authorService.save(authorDto.toAtuthorEntity()
+        ).toAtuthorDto()
+        return ResponseEntity(createAuthor, HttpStatus.CREATED)
+    }
 }
