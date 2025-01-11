@@ -8,6 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest
 class AuthorServiceImplTest @Autowired constructor(private underTest: AuthorServiceImpl){
     @Test
     fun `test that save persists the Author in the database`(){
-        
+        underTest.save()
     }
 }
