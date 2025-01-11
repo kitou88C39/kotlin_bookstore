@@ -1,5 +1,8 @@
 package com.devtiro.bookstore.controllers
 
+import com.ninjasquad.springmockk.MockBean
+import io.mockk.empty
+import io.mockk.verify
 import org.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.AutoConfigure.web.servlet.AutoConfigureMockMvc
@@ -9,7 +12,7 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.get
 import org.springframework.test.web.servlet.post
 
-
+private const val AUTHORS_BASE_UR = "/v1/authors"
 
 @SpringBootTest
 @AutoConfigureMockMvc
