@@ -58,7 +58,13 @@ class AuthorControllerTest @Autowired constructor(
 }
     
 @Test
-    fun `test that list returns an empty list and HTTP 200 when no author in the data`(){
+    fun `test that list returns an empty list and HTTP 200 when no author in the database`(){
+        every {
+            authorService.list()
+        } answers {
+            enptyList()
+        }
+
         mockMvc.get("AUTHORS_BASE_URL"){
             contentType = MediaType.APPLICATION_JSON
             accept = MediaType.APPLICATION_JSON
