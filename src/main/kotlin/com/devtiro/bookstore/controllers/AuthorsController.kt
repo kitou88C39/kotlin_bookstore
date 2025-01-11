@@ -5,11 +5,10 @@ import com.devtiro.bookstore.domain.dto.AuthorDto
 import com.devtiro.bookstore.services.AuthorService
 import com.devtiro.bookstore.services.toAuthorDto
 import com.devtiro.bookstore.services.toAuthorEntity
-import org.springframework.web.bind.annoatation.PostMapping
-import org.springframework.web.bind.annoatation.RequestBody
-import org.springframework.web.bind.annoatation.RestController
+import org.springframework.web.bind.annoatation.*
 
 @RestController
+@RequestMapping(path = ["/v1/authors"])
 class AuthorController(private val AuthorService: AuthorService) {
 
     @PostMapping(path = ["/v1/authors"])
