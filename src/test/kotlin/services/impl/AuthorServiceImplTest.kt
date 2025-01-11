@@ -17,5 +17,9 @@ class AuthorServiceImplTest @Autowired constructor(
        assertThat(saveAuthor.id).isNotNull()
 
        val recalledAuthor = authorRepository.findById(saveAuthor.id)
+       assertThat(recalledAuthor).isNotNull()
+       assertThat(saveAuthor.id).isEqualTo(
+        testAuthorEntityA(id=saveAuthor.id)
+       )
     }
 }
