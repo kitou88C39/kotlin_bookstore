@@ -9,7 +9,7 @@ import org.springframework.web.bind.annoatation.*
 
 @RestController
 @RequestMapping(path = ["/v1/authors"])
-class AuthorController(private val AuthorService: AuthorService) {
+class AuthorController(private val authorService: AuthorService) {
 
     @PostMapping
     fun createAuthor(@RequestBody authorDto: AuthorDto): ResponseEntity<AuthorDto>{
@@ -18,9 +18,8 @@ class AuthorController(private val AuthorService: AuthorService) {
         return ResponseEntity(createAuthor, HttpStatus.CREATED)
     }
     @GetMapping
-    fun readManyAuthor(@RequestBody authorDto: AuthorDto): List<AuthorDto>{
-        val createAuthor = authorService.save(authorDto.toAtuthorEntity()
-        ).toAtuthorDto()
-        return ResponseEntity(createAuthor, HttpStatus.CREATED)
+    fun readManyAuthor(): List<AuthorDto>{
+        
+        return authorService.list().map{it.toAtuthorDto()}
     }
 }
