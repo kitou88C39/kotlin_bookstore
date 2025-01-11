@@ -45,9 +45,10 @@ class AuthorControllerTest @Autowired constructor(
         id = null,
         name = "John Doe",
         age = 30,
-        description = "author-image.jpeg",
-        image = "some-description.jpeg"
+        image = "author-image.joeg",
+        description = "author-image.jpeg"
     )
+    verify{authorService.save(expected)}
 }
     @Test
     fun `test that create Author returns a HTTP 201 status on a successful create`(){
