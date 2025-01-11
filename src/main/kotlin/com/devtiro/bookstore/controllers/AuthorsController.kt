@@ -11,14 +11,14 @@ import org.springframework.web.bind.annoatation.*
 @RequestMapping(path = ["/v1/authors"])
 class AuthorController(private val AuthorService: AuthorService) {
 
-    @PostMapping(path = ["/v1/authors"])
+    @PostMapping
     fun createAuthor(@RequestBody authorDto: AuthorDto): ResponseEntity<AuthorDto>{
         val createAuthor = authorService.save(authorDto.toAtuthorEntity()
         ).toAtuthorDto()
         return ResponseEntity(createAuthor, HttpStatus.CREATED)
     }
-    @GetMapping(path = ["/v1/authors"])
-    fun createAuthor(@RequestBody authorDto: AuthorDto): ResponseEntity<AuthorDto>{
+    @GetMapping
+    fun readManyAuthor(@RequestBody authorDto: AuthorDto): List<AuthorDto>{
         val createAuthor = authorService.save(authorDto.toAtuthorEntity()
         ).toAtuthorDto()
         return ResponseEntity(createAuthor, HttpStatus.CREATED)
