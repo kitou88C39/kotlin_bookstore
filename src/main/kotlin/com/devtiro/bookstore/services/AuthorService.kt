@@ -6,5 +6,7 @@ interface AuthorService{
 
     fun save(AuthorEntity: AuthorEntity): AuthorEntity
 
-    fun list(): List<AuthorEntity>
+    fun list(): List<AuthorEntity> {
+        return authorRepository.findAll()
+    }
 }
