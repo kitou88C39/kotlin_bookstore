@@ -33,6 +33,7 @@ class AuthorServiceImplTest @Autowired constructor(
     fun `test that list returns authors when present in the database`(){
        val saveAuthor = authorRepository.save(testAuthorEntityA())
        val expected = ListOf(saveAuthor)
-       val result = underTest.list(testAuthorEntityA())
+       val result = underTest.list()
+       assertThat(result).isEqualTo(expected)
     }
 }
