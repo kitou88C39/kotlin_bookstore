@@ -12,19 +12,22 @@ import org.springframework.web.bind.annoatation.*
 class AuthorController(private val authorService: AuthorService) {
 
     @PostMapping
-    fun createAuthor(@RequestBody authorDto: AuthorDto): ResponseEntity<AuthorDto>{
+    fun createAuthor(@RequestBody authorDto: AuthorDto): ResponseEntity<AuthorDto> {
         val createAuthor = authorService.save(authorDto.toAtuthorEntity()
         ).toAtuthorDto()
         return ResponseEntity(createAuthor, HttpStatus.CREATED)
     }
 
     @GetMapping
-    fun readManyAuthor(): List<AuthorDto>{
+    fun readManyAuthor(): List<AuthorDto> {
         return authorService.list().map{it.toAtuthorDto()}
     }
 
     @GetMapping(path = ["/{id}"])
-    fun readOneAuthor(@PathVariable("id") id: Long): ResponseEntity<AuthorDto>{
-        return authorService.list().map{it.toAtuthorDto()}
+    fun readOneAuthor(@PathVariable("id") id: Long): ResponseEntity<AuthorDto> {
+        val readOneAuthor = authorService.get(id)?.toAtuthorDto()
+        foundAuthor?.let {
+        return ResponseEntity(it, HttpStatus.OK)
+        }
     }
 }
