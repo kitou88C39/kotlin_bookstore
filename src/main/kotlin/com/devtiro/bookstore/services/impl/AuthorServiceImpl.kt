@@ -9,10 +9,14 @@ import org.springframework.stereotype.Service
 class AuthorServiceImpl (private val authorRepository: authorRepository): AuthorService {
 
    override fun save(AuthorEntity: AuthorEntity): AuthorEntity {
-    return authorRepository.save(AuthorEntity)
+      return authorRepository.save(AuthorEntity)
    }
 
    override fun list(): List<AuthorEntity> {
       return authorRepository.findAll()
-     }
+   }
+
+   override fun get(id: Long): AuthorEntity? {
+      return authorRepository.findByIdOrNull(id)
+   }
 }
