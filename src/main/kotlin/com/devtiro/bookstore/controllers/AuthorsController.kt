@@ -17,14 +17,14 @@ class AuthorController(private val authorService: AuthorService) {
         ).toAtuthorDto()
         return ResponseEntity(createAuthor, HttpStatus.CREATED)
     }
-    
+
     @GetMapping
     fun readManyAuthor(): List<AuthorDto>{
         return authorService.list().map{it.toAtuthorDto()}
     }
 
-    @GetMapping
-    fun readManyAuthor(): List<AuthorDto>{
+    @GetMapping(path = ["/{id}"])
+    fun readOneAuthor(@PathVariable("id") id: Long): ResponseEntity<AuthorDto>{
         return authorService.list().map{it.toAtuthorDto()}
     }
 }
