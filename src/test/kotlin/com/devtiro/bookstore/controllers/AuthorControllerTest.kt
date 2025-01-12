@@ -92,4 +92,12 @@ class AuthorControllerTest @Autowired constructor(
             content { jsonPath ( "$[0].description", equalTo("Some description"))}
             content { jsonPath ( "$[0].image", equalTo("author-image.jpeg"))}
         }
+
+        @Test
+    fun `test that get returns HTTP 404 when author in the database`(){
+        every {
+            authorService.list()
+        } answers {
+            ListOf(testAuthorEntityA(1))
+        }
 }
