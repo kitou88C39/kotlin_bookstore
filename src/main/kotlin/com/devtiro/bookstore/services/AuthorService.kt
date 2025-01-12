@@ -11,4 +11,3 @@ interface AuthorService {
     fun list(id: Long): AuthorEntity?
 
 }
-        
