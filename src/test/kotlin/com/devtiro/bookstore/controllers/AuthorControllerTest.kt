@@ -95,9 +95,8 @@ class AuthorControllerTest @Autowired constructor(
 
         @Test
     fun `test that get returns HTTP 404 when author in the database`(){
-        every {
-            authorService.list()
-        } answers {
-            ListOf(testAuthorEntityA(1))
+        mockMvc.get("${AUTHORS_BASE_URL}/999"){
+            contentType = MediaType.APPLICATION_JSON
+            accept = MediaType.APPLICATION_JSON
         }
 }
