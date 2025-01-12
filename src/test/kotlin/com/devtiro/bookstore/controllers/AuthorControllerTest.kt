@@ -93,7 +93,7 @@ class AuthorControllerTest @Autowired constructor(
             content { jsonPath ( "$[0].image", equalTo("author-image.jpeg"))}
         }
 
-        @Test
+@Test
     fun `test that get returns HTTP 404 when author in the database`(){
         every {
             authorService.get(any())
@@ -105,5 +105,8 @@ class AuthorControllerTest @Autowired constructor(
             contentType = MediaType.APPLICATION_JSON
             accept = MediaType.APPLICATION_JSON
         }}.andExpect {
-            status { isOk() }
+            status { isNotFound() }
 }
+
+@Test
+    fun `test that get returns HTTP 404 when author in the database`(){}
