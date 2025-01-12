@@ -26,8 +26,8 @@ class AuthorController(private val authorService: AuthorService) {
     @GetMapping(path = ["/{id}"])
     fun readOneAuthor(@PathVariable("id") id: Long): ResponseEntity<AuthorDto> {
         val readOneAuthor = authorService.get(id)?.toAtuthorDto()
-        foundAuthor?.let {
-        return ResponseEntity(it, HttpStatus.OK)
-        }
+        return foundAuthor?.let {
+            ResponseEntity(it, HttpStatus.OK)
+        } ?: ResponseEntity(HttpStatus.NOT_FOUND)
     }
 }
