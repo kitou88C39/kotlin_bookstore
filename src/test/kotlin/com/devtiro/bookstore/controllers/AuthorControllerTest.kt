@@ -110,5 +110,16 @@ class AuthorControllerTest @Autowired constructor(
 
 @Test
     fun `test that get returns HTTP 200 and author when author found`(){
-        
+        every {
+            authorService.get(any())
+        } answers {
+            null
+        }
+
+        mockMvc.get("${AUTHORS_BASE_URL}/999"){
+            contentType = MediaType.APPLICATION_JSON
+            accept = MediaType.APPLICATION_JSON
+        }}.andExpect {
+            status { isNotFound() }
+}
     }
