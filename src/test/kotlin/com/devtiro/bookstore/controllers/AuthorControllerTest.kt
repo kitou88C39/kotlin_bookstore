@@ -109,4 +109,6 @@ class AuthorControllerTest @Autowired constructor(
 }
 
 @Test
-    fun `test that get returns HTTP 404 when author in the database`(){}
+    fun `test that get returns HTTP 200 and author when author found`(){
+        
+    }
