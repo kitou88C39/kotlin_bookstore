@@ -120,8 +120,8 @@ class AuthorControllerTest @Autowired constructor(
             contentType = MediaType.APPLICATION_JSON
             accept = MediaType.APPLICATION_JSON
         }}.andExpect {
-            status { isNotFound() }
-            content { jsonPath ( "$.id", equalTo(1))}
+            status { isOk() }
+            content { jsonPath ( "$.id", equalTo(999))}
             content { jsonPath ( "$.name", equalTo("John Doe"))}
             content { jsonPath ( "$.age", equalTo(30))}
             content { jsonPath ( "$.description", equalTo("Some description"))}
