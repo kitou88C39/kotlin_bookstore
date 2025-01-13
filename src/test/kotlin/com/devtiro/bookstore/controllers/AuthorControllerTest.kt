@@ -71,7 +71,7 @@ class AuthorControllerTest @Autowired constructor(
             status { isOk() }
             content { json ( "[]")}
         }
-    }
+
 
     @Test
     fun `test that list returns author and HTTP 200 when author in the database`(){
@@ -121,10 +121,11 @@ class AuthorControllerTest @Autowired constructor(
             accept = MediaType.APPLICATION_JSON
         }}.andExpect {
             status { isNotFound() }
-            content { jsonPath ( "$[0].id", equalTo(1))}
-            content { jsonPath ( "$[0].name", equalTo("John Doe"))}
-            content { jsonPath ( "$[0].age", equalTo(30))}
-            content { jsonPath ( "$[0].description", equalTo("Some description"))}
-            content { jsonPath ( "$[0].image", equalTo("author-image.jpeg"))}
+            content { jsonPath ( "$.id", equalTo(1))}
+            content { jsonPath ( "$.name", equalTo("John Doe"))}
+            content { jsonPath ( "$.age", equalTo(30))}
+            content { jsonPath ( "$.description", equalTo("Some description"))}
+            content { jsonPath ( "$.image", equalTo("author-image.jpeg"))}
         }
     }
+}
