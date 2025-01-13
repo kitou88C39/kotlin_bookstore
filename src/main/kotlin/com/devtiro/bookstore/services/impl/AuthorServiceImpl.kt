@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service
 class AuthorServiceImpl (private val authorRepository: authorRepository): AuthorService {
 
    override fun save(AuthorEntity: AuthorEntity): AuthorEntity {
+      require(null == AuthorEntity.id)
       return authorRepository.save(AuthorEntity)
    }
 
