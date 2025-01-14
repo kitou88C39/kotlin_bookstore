@@ -35,4 +35,17 @@ class AuthorController(private val authorService: AuthorService) {
             ResponseEntity(it, HttpStatus.OK)
         } ?: ResponseEntity(HttpStatus.NOT_FOUND)
     }
+    
+    @PostMapping
+    fun createAuthor(@RequestBody authorDto: AuthorDto): ResponseEntity<AuthorDto> {
+        try {
+            val createAuthor = authorService.create(
+                .authorDto.toAtuthorEntity()
+            ).toAtuthorDto()
+            return ResponseEntity(createAuthor, HttpStatus.OK)
+        } catch (ex: IllegalArgumentException) {
+            return ResponseEntity(HttpStatus.NOT_FOUND)
+        }
+    }
+
 }
