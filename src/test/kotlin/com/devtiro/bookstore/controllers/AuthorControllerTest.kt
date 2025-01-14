@@ -57,17 +57,19 @@ class AuthorControllerTest @Autowired constructor(
 }
 
 @Test
-    fun `test that create Author returns a HTTP 201 status no a successful create`(){
-        mockMvc.get("AUTHORS_BASE_URL"){
-            contentType = MediaType.APPLICATION_JSON
-            accept = MediaType.APPLICATION_JSON
-            content = objectMapper.writeValueAsString(
-
-            )
-        }.andExpect {
-            status { isCreated() }
-        }
+fun `test that create Author returns a HTTP 201 status no a successful create`(){
+    mockMvc.get("AUTHORS_BASE_URL"){
+        contentType = MediaType.APPLICATION_JSON
+        accept = MediaType.APPLICATION_JSON
+        content = objectMapper.writeValueAsString(
+            testAuthorDtoA()
+        )
+    }.andExpect {
+        status { isCreated() }
     }
+}
+
+
 
 @Test
     fun `test that list returns an empty list and HTTP 200 when no author in the database`(){
