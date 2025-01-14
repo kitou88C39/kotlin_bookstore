@@ -40,9 +40,7 @@ class AuthorController(private val authorService: AuthorService) {
     fun fullUpdateAuthor(@PathVariable("id") id:Long, @RequestBody authorDto: AuthorDto): ResponseEntity<AuthorDto> {
         try {
             val updateAuthor = authorService.fullUpdate(id, authorDto.toAtuthorEntity())
-                .authorDto.toAtuthorEntity()
-            ).toAtuthorDto()
-            return ResponseEntity(createAuthor, HttpStatus.OK)
+            return ResponseEntity(updateAuthor.toAtuthorDto(), HttpStatus.OK)
         } catch (ex: IllegalArgumentException) {
             return ResponseEntity(HttpStatus.NOT_FOUND)
         }
