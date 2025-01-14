@@ -88,25 +88,25 @@ fun `test that list returns an empty list and HTTP 200 when no author in the dat
 }
 
 
-    @Test
-    fun `test that list returns author and HTTP 200 when author in the database`(){
-        every {
-            authorService.list()
-        } answers {
-            ListOf(testAuthorEntityA(1))
-        }
+@Test
+fun `test that list returns author and HTTP 200 when author in the database`(){
+    every {
+        authorService.list()
+    } answers {
+        ListOf(testAuthorEntityA(1))
+    }
 
-        mockMvc.get("AUTHORS_BASE_URL"){
-            contentType = MediaType.APPLICATION_JSON
-            accept = MediaType.APPLICATION_JSON
-        }.andExpect {
-            status { isOk() }
-            content { jsonPath ( "$[0].id", equalTo(1))}
-            content { jsonPath ( "$[0].name", equalTo("John Doe"))}
-            content { jsonPath ( "$[0].age", equalTo(30))}
-            content { jsonPath ( "$[0].description", equalTo("Some description"))}
-            content { jsonPath ( "$[0].image", equalTo("author-image.jpeg"))}
-        }
+    mockMvc.get("AUTHORS_BASE_URL"){
+        contentType = MediaType.APPLICATION_JSON
+        accept = MediaType.APPLICATION_JSON
+    }.andExpect {
+        status { isOk() }
+        content { jsonPath ( "$[0].id", equalTo(1))}
+        content { jsonPath ( "$[0].name", equalTo("John Doe"))}
+        content { jsonPath ( "$[0].age", equalTo(30))}
+        content { jsonPath ( "$[0].description", equalTo("Some description"))}
+        content { jsonPath ( "$[0].image", equalTo("author-image.jpeg"))}
+    }
 
 @Test
     fun `test that get returns HTTP 404 when author in the database`(){
