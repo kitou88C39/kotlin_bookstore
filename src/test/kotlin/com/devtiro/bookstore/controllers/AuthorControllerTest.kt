@@ -70,7 +70,7 @@ fun `test that create Author returns a HTTP 201 status no a successful create`()
 }
 
 @Test
-fun `test that create Author returns a HTTP 201 status no a successful create`(){
+fun `test that create Author returns HTTP 400 when IllegalArgumentException is thrown`(){
     mockMvc.get("AUTHORS_BASE_URL"){
         contentType = MediaType.APPLICATION_JSON
         accept = MediaType.APPLICATION_JSON
