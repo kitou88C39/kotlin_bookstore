@@ -21,9 +21,11 @@ class AuthorServiceImpl (private val authorRepository: authorRepository): Author
       return authorRepository.findByIdOrNull(id)
    }
 
+   @Transactional
    override fun get(id: Long, authorEntity: AuthorEntity): AuthorEntity {
       check(authorRepository.existsById(id))
       val normalisedAuthor = authorEntity.copy(id=id)
+      return authorRepository.save(normalisedAuthor)
    }
 
 }
