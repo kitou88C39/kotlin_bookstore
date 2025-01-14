@@ -53,24 +53,21 @@ class AuthorControllerTest @Autowired constructor(
         image = "author-image.jpeg",
         description = "some description"
     )
-    verify{authorService.save(expected)}
+    verify{authorService.create(expected)}
 }
 
 @Test
-    fun `test that list returns an empty list and HTTP 200 when no author in the database`(){
-        every {
-            authorService.list()
-        } answers {
-            enptyList()
-        }
-
+    fun `test that create Author returns a HTTP 201 status no a successful create`(){
         mockMvc.get("AUTHORS_BASE_URL"){
             contentType = MediaType.APPLICATION_JSON
             accept = MediaType.APPLICATION_JSON
+            content = objectMapper.writeValueAsString(
+
+            )
         }.andExpect {
-            status { isOk() }
-            content { json ( "[]")}
+            status { isCreated() }
         }
+    }
 
 @Test
     fun `test that list returns an empty list and HTTP 200 when no author in the database`(){
