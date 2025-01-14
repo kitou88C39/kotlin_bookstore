@@ -47,5 +47,4 @@ class AuthorController(private val authorService: AuthorService) {
             ResponseEntity(HttpStatus.BAD_REQUEST)
         }
     }
-
 }

@@ -50,12 +50,28 @@ class AuthorControllerTest @Autowired constructor(
         id = null,
         name = "John Doe",
         age = 30,
-        image = "author-image.joeg",
-        description = "author-image.jpeg"
+        image = "author-image.jpeg",
+        description = "some description"
     )
     verify{authorService.save(expected)}
 }
-    
+
+@Test
+    fun `test that list returns an empty list and HTTP 200 when no author in the database`(){
+        every {
+            authorService.list()
+        } answers {
+            enptyList()
+        }
+
+        mockMvc.get("AUTHORS_BASE_URL"){
+            contentType = MediaType.APPLICATION_JSON
+            accept = MediaType.APPLICATION_JSON
+        }.andExpect {
+            status { isOk() }
+            content { json ( "[]")}
+        }
+
 @Test
     fun `test that list returns an empty list and HTTP 200 when no author in the database`(){
         every {
