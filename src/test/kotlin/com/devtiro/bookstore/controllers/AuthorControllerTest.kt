@@ -69,6 +69,18 @@ fun `test that create Author returns a HTTP 201 status no a successful create`()
     }
 }
 
+@Test
+fun `test that create Author returns a HTTP 201 status no a successful create`(){
+    mockMvc.get("AUTHORS_BASE_URL"){
+        contentType = MediaType.APPLICATION_JSON
+        accept = MediaType.APPLICATION_JSON
+        content = objectMapper.writeValueAsString(
+            testAuthorDtoA()
+        )
+    }.andExpect {
+        status { isCreated() }
+    }
+}
 
 
 @Test
