@@ -109,18 +109,18 @@ fun `test that list returns author and HTTP 200 when author in the database`(){
     }
 
 @Test
-    fun `test that get returns HTTP 404 when author in the database`(){
-        every {
-            authorService.get(any())
-        } answers {
-            null
-        }
+fun `test that get returns HTTP 404 when author in the database`(){
+    every {
+        authorService.get(any())
+    } answers {
+        null
+    }
 
-        mockMvc.get("${AUTHORS_BASE_URL}/999"){
-            contentType = MediaType.APPLICATION_JSON
-            accept = MediaType.APPLICATION_JSON
-        }}.andExpect {
-            status { isNotFound() }
+    mockMvc.get("${AUTHORS_BASE_URL}/999"){
+        contentType = MediaType.APPLICATION_JSON
+        accept = MediaType.APPLICATION_JSON
+    }}.andExpect {
+        status { isNotFound() }
 }
 
 @Test
