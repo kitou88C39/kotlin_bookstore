@@ -10,4 +10,6 @@ interface AuthorService {
 
     fun list(id: Long): AuthorEntity?
 
+    fun fullUpdate(id: Long, authorEntity: AuthorEntity): AuthorEntity
+
 }
