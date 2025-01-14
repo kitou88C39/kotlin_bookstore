@@ -20,4 +20,9 @@ class AuthorServiceImpl (private val authorRepository: authorRepository): Author
    override fun get(id: Long): AuthorEntity? {
       return authorRepository.findByIdOrNull(id)
    }
+
+   override fun get(id: Long): AuthorEntity? {
+      return authorRepository.findByIdOrNull(id)
+   }
+
 }
