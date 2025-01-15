@@ -158,24 +158,24 @@ fun `test that get returns HTTP 200 and author when author found`(){
         }
     }
 
-    @Test
-    fun `test that full update Author return HTTP 200 and updated Author on successful call`(){
-        every {
-            authorService.fullUpdate(any(),any())
-        } answers {
-            secondArg()
-        }
+@Test
+fun `test that full update Author return HTTP 200 and updated Author on successful call`(){
+    every {
+        authorService.fullUpdate(any(),any())
+    } answers {
+        secondArg()
+    }
     
-        mockMvc.put("${AUTHORS_BASE_URL}/999"){
-            contentType = MediaType.APPLICATION_JSON
-            accept = MediaType.APPLICATION_JSON
-            content = testAuthorDtoA(id=999)
-        }}.andExpect {
-            status { isOk() }
-            content { jsonPath ( "$.id", equalTo(999))}
-            content { jsonPath ( "$.name", equalTo("John Doe"))}
-            content { jsonPath ( "$.age", equalTo(30))}
-            content { jsonPath ( "$.description", equalTo("Some description"))}
-            content { jsonPath ( "$.image", equalTo("author-image.jpeg"))}
-            }
-        }
+    mockMvc.put("${AUTHORS_BASE_URL}/999"){
+        contentType = MediaType.APPLICATION_JSON
+        accept = MediaType.APPLICATION_JSON
+        content = testAuthorDtoA(id=999)
+    }}.andExpect {
+        status { isOk() }
+        content { jsonPath ( "$.id", equalTo(999))}
+        content { jsonPath ( "$.name", equalTo("John Doe"))}
+        content { jsonPath ( "$.age", equalTo(30))}
+        content { jsonPath ( "$.description", equalTo("Some description"))}
+        content { jsonPath ( "$.image", equalTo("author-image.jpeg"))}
+    }
+}
