@@ -25,8 +25,10 @@ class AuthorServiceImplTest @Autowired constructor(
 
    @Test
    fun `test that an Author with an ID throws an IllegalArgumentException`(){
-      val result = underTest.list(testAuthorEntityA())
-      assertThat(result).isEmpty()
+      assertThrows<IllegalArgumentException>{
+         val existingAuthor = testAuthorEntityA(id=999)
+         underTest.create(existingAuthor)
+      }
    }
 
    @Test
