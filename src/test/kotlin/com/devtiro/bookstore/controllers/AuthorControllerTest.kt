@@ -82,7 +82,7 @@ every {
             testAuthorDtoA()
         )
     }.andExpect {
-        status { isCreated() }
+        status { isBadRequest() }
     }
 }
 
