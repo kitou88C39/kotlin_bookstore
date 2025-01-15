@@ -180,12 +180,10 @@ fun `test that full update Author return HTTP 200 and updated Author on successf
     }
 
 @Test
-fun `test that full update Author return HTTP 200 and updated Author on successful call`(){
+fun `test that full update Author return HTTP 400 on IllegalStateException`(){
     every {
         authorService.fullUpdate(any(),any())
-    } answers {
-        secondArg()
-    }
+    } throws(IllegalStateException)
     
     mockMvc.put("${AUTHORS_BASE_URL}/999"){
         contentType = MediaType.APPLICATION_JSON
