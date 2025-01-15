@@ -24,7 +24,7 @@ class AuthorServiceImplTest @Autowired constructor(
    }
 
    @Test
-   fun `test that list returns empty list when no author in the database`(){
+   fun `test that an Author with an ID throws an IllegalArgumentException`(){
       val result = underTest.list(testAuthorEntityA())
       assertThat(result).isEmpty()
    }
