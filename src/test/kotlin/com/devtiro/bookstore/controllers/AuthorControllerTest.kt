@@ -170,7 +170,12 @@ fun `test that get returns HTTP 200 and author when author found`(){
             contentType = MediaType.APPLICATION_JSON
             accept = MediaType.APPLICATION_JSON
             content = testAuthorDtoA(id=999)
-        } andExpect {
+        }}.andExpect {
             status { isOk() }
-    }
-}
+            content { jsonPath ( "$.id", equalTo(999))}
+            content { jsonPath ( "$.name", equalTo("John Doe"))}
+            content { jsonPath ( "$.age", equalTo(30))}
+            content { jsonPath ( "$.description", equalTo("Some description"))}
+            content { jsonPath ( "$.image", equalTo("author-image.jpeg"))}
+            }
+        }
