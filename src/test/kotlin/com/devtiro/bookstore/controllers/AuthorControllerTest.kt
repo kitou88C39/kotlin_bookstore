@@ -166,11 +166,11 @@ fun `test that get returns HTTP 200 and author when author found`(){
             secondArg()
         }
     
-        mockMvc.get("AUTHORS_BASE_URL"){
+        mockMvc.put("${AUTHORS_BASE_URL}/999"){
             contentType = MediaType.APPLICATION_JSON
             accept = MediaType.APPLICATION_JSON
+            content = testAuthorDtoA(id=999)
         } andExpect {
             status { isOk() }
-            content { json ( "[]")}
     }
 }
