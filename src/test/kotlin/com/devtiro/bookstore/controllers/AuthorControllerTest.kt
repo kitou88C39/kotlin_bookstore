@@ -159,7 +159,7 @@ fun `test that get returns HTTP 200 and author when author found`(){
     }
 
     @Test
-    fun `test that list returns an empty list and HTTP 200 when no author in the database`(){
+    fun `test that full update Author return HTTP 200 and updated Author on successful call`(){
         every {
             authorService.list()
         } answers {
