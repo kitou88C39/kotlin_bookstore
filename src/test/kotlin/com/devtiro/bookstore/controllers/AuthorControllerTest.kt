@@ -161,9 +161,9 @@ fun `test that get returns HTTP 200 and author when author found`(){
     @Test
     fun `test that full update Author return HTTP 200 and updated Author on successful call`(){
         every {
-            authorService.list()
+            authorService.fullUpdate(any(),any())
         } answers {
-            enptyList()
+            secondArg()
         }
     
         mockMvc.get("AUTHORS_BASE_URL"){
