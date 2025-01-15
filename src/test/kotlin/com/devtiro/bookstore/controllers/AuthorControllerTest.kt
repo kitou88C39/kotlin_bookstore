@@ -86,7 +86,6 @@ every {
     }
 }
 
-
 @Test
 fun `test that list returns an empty list and HTTP 200 when no author in the database`(){
     every {
@@ -102,7 +101,6 @@ fun `test that list returns an empty list and HTTP 200 when no author in the dat
         status { isOk() }
         content { json ( "[]")}
 }
-
 
 @Test
 fun `test that list returns author and HTTP 200 when author in the database`(){
@@ -158,5 +156,21 @@ fun `test that get returns HTTP 200 and author when author found`(){
         content { jsonPath ( "$.description", equalTo("Some description"))}
         content { jsonPath ( "$.image", equalTo("author-image.jpeg"))}
         }
+    }
+
+    @Test
+    fun `test that full update Author return HTTP 200 and updated Author on successful call`(){
+        every {
+            authorService.list()
+        } answers {
+            enptyList()
+        }
+    
+        mockMvc.get("AUTHORS_BASE_URL"){
+            contentType = MediaType.APPLICATION_JSON
+            accept = MediaType.APPLICATION_JSON
+        } andExpect {
+            status { isOk() }
+            content { json ( "[]")}
     }
 }
