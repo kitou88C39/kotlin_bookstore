@@ -169,7 +169,7 @@ fun `test that full update Author return HTTP 200 and updated Author on successf
     mockMvc.put("${AUTHORS_BASE_URL}/999"){
         contentType = MediaType.APPLICATION_JSON
         accept = MediaType.APPLICATION_JSON
-        content = testAuthorDtoA(id=999)
+        content = objectMapper.writeValueAsString(testAuthorDtoA(id=999))
     }}.andExpect {
         status { isOk() }
         content { jsonPath ( "$.id", equalTo(999))}
