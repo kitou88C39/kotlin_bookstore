@@ -190,11 +190,6 @@ fun `test that full update Author return HTTP 400 on IllegalStateException`(){
         accept = MediaType.APPLICATION_JSON
         content = objectMapper.writeValueAsString(testAuthorDtoA(id=999))
     }}.andExpect {
-        status { isOk() }
-        content { jsonPath ( "$.id", equalTo(999))}
-        content { jsonPath ( "$.name", equalTo("John Doe"))}
-        content { jsonPath ( "$.age", equalTo(30))}
-        content { jsonPath ( "$.description", equalTo("Some description"))}
-        content { jsonPath ( "$.image", equalTo("author-image.jpeg"))}
+        status { isBadRequest() }
     }
 }
