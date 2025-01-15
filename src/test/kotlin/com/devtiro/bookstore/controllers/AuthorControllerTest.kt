@@ -25,10 +25,10 @@ class AuthorControllerTest @Autowired constructor(
 
     @BeforeEach
     fun beforeEach()
-    every {
-        authorService.save(any())
-    } answers {
-        firstArg()
+        every {
+            authorService.save(any())
+        } answers {
+            firstArg()
     }
 
 @Test
