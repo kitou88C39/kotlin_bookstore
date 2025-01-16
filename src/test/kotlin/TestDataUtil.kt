@@ -1,1 +1,7 @@
-fun testAuthorEntityA(id: Long? = null) = AuthorEntity()
+fun testAuthorEntityA(id: Long? = null) = AuthorEntity(
+    id = null,
+    name = "John Doe",
+    age = 30,
+    description = "some description"
+    image = "author-image.jpeg",
+)
