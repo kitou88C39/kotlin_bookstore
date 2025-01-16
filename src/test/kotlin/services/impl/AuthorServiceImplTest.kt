@@ -69,8 +69,8 @@ class AuthorServiceImplTest @Autowired constructor(
          description = "Some other description",
          image = "some-other-image.jpeg",
       )
-
-      assertThat(result).isEqualTo(saveAuthor)
+      val result = underTest.fullUpdate(existingAuthorId, updateAuthor)
+      assertThat(result).isEqualTo(updateAuthor)
    }
 
 }
