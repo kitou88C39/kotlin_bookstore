@@ -1,0 +1,1 @@
+fun testAuthorEntityA(id: Long? = null) = AuthorEntity()
