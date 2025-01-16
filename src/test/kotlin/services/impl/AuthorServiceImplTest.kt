@@ -79,8 +79,7 @@ class AuthorServiceImplTest @Autowired constructor(
 
    @Test
    fun `test that full update Author throws IllegalStateException when Author does not exist in the database`(){
-      val saveAuthor = authorRepository.save(testAuthorEntityA())
-      val result = underTest.get(saveAuthor.id)
+      
       assertThat(result).isEqualTo(saveAuthor)
    }
 }
