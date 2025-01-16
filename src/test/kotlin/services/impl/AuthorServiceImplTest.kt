@@ -71,6 +71,9 @@ class AuthorServiceImplTest @Autowired constructor(
       )
       val result = underTest.fullUpdate(existingAuthorId, updateAuthor)
       assertThat(result).isEqualTo(updateAuthor)
+
+      val result = underTest.fullUpdate(existingAuthorId, updateAuthor)
+      assertThat(result).isEqualTo(updateAuthor)
    }
 
 }
