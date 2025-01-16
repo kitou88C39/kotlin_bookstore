@@ -72,8 +72,8 @@ class AuthorServiceImplTest @Autowired constructor(
       val result = underTest.fullUpdate(existingAuthorId, updateAuthor)
       assertThat(result).isEqualTo(updateAuthor)
 
-      val result = underTest.fullUpdate(existingAuthorId, updateAuthor)
-      assertThat(result).isEqualTo(updateAuthor)
+      val retrievedAuthor = authorRepository.findByIdOrNull(existingAuthorId)
+      assertThat(retrievedAuthor).isEqualTo()
+      assertThat(retrievedAuthor).isEqualTo(updateAuthor)
    }
-
 }
