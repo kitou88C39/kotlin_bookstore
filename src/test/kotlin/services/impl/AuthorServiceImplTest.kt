@@ -76,9 +76,9 @@ class AuthorServiceImplTest @Autowired constructor(
       assertThat(retrievedAuthor).isNotNull()
       assertThat(retrievedAuthor).isEqualTo(updateAuthor)
    }
-   
+
    @Test
-   fun `test that get returns author when author is present in the database`(){
+   fun `test that full update Author throws IllegalStateException when Author does not exist in the database`(){
       val saveAuthor = authorRepository.save(testAuthorEntityA())
       val result = underTest.get(saveAuthor.id)
       assertThat(result).isEqualTo(saveAuthor)
