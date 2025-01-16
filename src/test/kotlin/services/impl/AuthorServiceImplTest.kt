@@ -80,6 +80,8 @@ class AuthorServiceImplTest @Autowired constructor(
    @Test
    fun `test that full update Author throws IllegalStateException when Author does not exist in the database`(){
       
-      assertThrows<IllegalArgumentException>{}
+      assertThrows<IllegalArgumentException>{
+         
+      }
    }
 }
