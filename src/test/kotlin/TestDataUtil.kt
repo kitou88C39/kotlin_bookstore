@@ -1,3 +1,8 @@
+package com.devtiro.bookstore
+
+import com.devtiro.bookstore.domain.dto.AuthorDto
+import com.devtiro.bookstore.domain.entities.AuthorEntity
+
 fun testAuthorDtoA(id: Long? = null) = AuthorDto(
     id = id,
     name = "John Doe",
