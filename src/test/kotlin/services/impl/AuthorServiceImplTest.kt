@@ -60,8 +60,10 @@ class AuthorServiceImplTest @Autowired constructor(
 
    @Test
    fun `test that full update successfully update the author in the database`(){
-      val saveAuthor = authorRepository.save(testAuthorEntityA())
-      val result = underTest.get(saveAuthor.id)
+      val existingAuthor = authorRepository.save(testAuthorEntityA())
+      val existingAuthorId = existingAuthor.id
+      val updateAuthorId = AuthorEntity()
+
       assertThat(result).isEqualTo(saveAuthor)
    }
 
