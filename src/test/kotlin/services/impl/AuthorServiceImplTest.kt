@@ -63,11 +63,11 @@ class AuthorServiceImplTest @Autowired constructor(
       val existingAuthor = authorRepository.save(testAuthorEntityA())
       val existingAuthorId = existingAuthor.id
       val updateAuthorId = AuthorEntity(
-         "id" bigint NOT NULL,
-    "age" smallint,
-    "description" VARCHAR(512),
-    "image" VARCHAR(512),
-    "name" VARCHAR(512),
+         id = existingAuthorId,
+         name = "Don Joe",
+         age = 45,
+         description = "Some other description",
+         image = "some-other-image.jpeg",
       )
 
       assertThat(result).isEqualTo(saveAuthor)
