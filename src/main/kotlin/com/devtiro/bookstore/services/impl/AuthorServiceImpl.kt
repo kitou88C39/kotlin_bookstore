@@ -29,6 +29,7 @@ class AuthorServiceImpl (private val authorRepository: authorRepository): Author
    }
 
    override fun partiaUpdateAuthor(id: Long, AuthorUpdate: AuthorUpdateRequest): AuthorEntity {
-      val normalisedAuthor = authorEntity.copy(id=id)
+      val existingAuthor = authorRepository.findByIdOrNull(id)
+      checkNotNull(existingAuthor)
    }
 }
