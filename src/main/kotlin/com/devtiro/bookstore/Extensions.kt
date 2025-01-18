@@ -19,7 +19,7 @@ fun AuthorDto.toAuthorEntity() = AuthorEntity(
     image=this.image
     )
 
-fun AuthorDto.toAuthorEntity() = AuthorEntity(
+fun AuthorUpdateRequestDto.toAuthorUpdateRequestDto() = AuthorUpdateRequest(
     id=this.id,
     name=this.name,
     age=this.age,
