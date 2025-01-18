@@ -4,6 +4,7 @@ import com.devtiro.bookstore.services.AuthorService
 import com.devtiro.bookstore.repositories.authorRepository
 import com.devtiro.bookstore.services.AuthorService
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 class AuthorServiceImpl (private val authorRepository: authorRepository): AuthorService {
@@ -28,6 +29,7 @@ class AuthorServiceImpl (private val authorRepository: authorRepository): Author
       return authorRepository.save(normalisedAuthor)
    }
 
+   @Transactional
    override fun partiaUpdateAuthor(id: Long, AuthorUpdate: AuthorUpdateRequest): AuthorEntity {
       val existingAuthor = authorRepository.findByIdOrNull(id)
       checkNotNull(existingAuthor)
@@ -38,5 +40,6 @@ class AuthorServiceImpl (private val authorRepository: authorRepository): Author
          description = authorUpdate.description ?: existingAuthor.description,
          image = authorUpdate.image ?: existingAuthor.image,
       )
+      return authorRepository.save(updateAuthor)
    }
 }
