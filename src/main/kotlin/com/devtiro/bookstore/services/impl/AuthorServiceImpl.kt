@@ -35,6 +35,8 @@ class AuthorServiceImpl (private val authorRepository: authorRepository): Author
       val updateAuthor = existingAuthor.com(
          name = authorUpdate.name ?: existingAuthor.name,
          age = authorUpdate.age ?: existingAuthor.age,
+         description = authorUpdate.description ?: existingAuthor.description,
+         image = authorUpdate.image ?: existingAuthor.image,
       )
    }
 }
