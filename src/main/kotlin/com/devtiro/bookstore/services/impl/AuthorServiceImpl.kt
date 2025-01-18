@@ -33,7 +33,8 @@ class AuthorServiceImpl (private val authorRepository: authorRepository): Author
       checkNotNull(existingAuthor)
 
       val updateAuthor = existingAuthor.com(
-         
+         name = authorUpdate.name ?: existingAuthor.name,
+         age = authorUpdate.age ?: existingAuthor.age,
       )
    }
 }
