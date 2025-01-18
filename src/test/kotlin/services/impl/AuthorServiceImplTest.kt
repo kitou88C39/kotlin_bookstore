@@ -79,9 +79,10 @@ class AuthorServiceImplTest @Autowired constructor(
 
    @Test
    fun `test that full update Author throws IllegalStateException when Author does not exist in the database`(){
-      assertThrows<IllegalArgumentException> {
+      assertThrows<IllegalStateException> {
       val nonExistingAuthorId = 999
-      val updateAuthor = testAuthorEntityB()
+      val updateAuthor = testAuthorEntityB(id=nonExistingAuthorId)
+      underTest.fullUpdate(nonExistingAuthorIdm updateAuthor)
       }
    }
 }
