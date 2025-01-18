@@ -48,8 +48,8 @@ class AuthorController(private val authorService: AuthorService) {
         }
     }
 
-    @PutMapping(path = ["/{id}"])
-    fun fullUpdateAuthor(@PathVariable("id") id:Long, @RequestBody authorDto: AuthorDto): ResponseEntity<AuthorDto> {
+    @PatchMapping(path = ["/{id}"])
+    fun partiaUpdateAuthor(@PathVariable("id") id:Long, @RequestBody authorDto: AuthorDto): ResponseEntity<AuthorDto> {
         return try {
             val updateAuthor = authorService.fullUpdate(id, authorDto.toAtuthorEntity())
             ResponseEntity(updateAuthor.toAtuthorDto(), HttpStatus.OK)
