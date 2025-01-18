@@ -58,4 +58,15 @@ class AuthorController(private val authorService: AuthorService) {
             ResponseEntity(HttpStatus.BAD_REQUEST)
         }
     }
+
+    @PatchMapping(path = ["/{id}"])
+    fun partiaUpdateAuthor(@PathVariable("id") id:Long, @RequestBody authorDto: AuthorUpdateRequest): ResponseEntity<AuthorDto> {
+        return try {
+            val updateAuthor = authorService.fullUpdate(id, authorDto.toAtuthorEntity())
+            ResponseEntity(updateAuthor.toAtuthorDto(), HttpStatus.OK)
+
+        } catch (ex: IllegalArgumentException) {
+            ResponseEntity(HttpStatus.BAD_REQUEST)
+        }
+    }
 }
