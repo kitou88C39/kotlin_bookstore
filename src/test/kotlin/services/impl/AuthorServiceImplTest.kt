@@ -88,10 +88,9 @@ class AuthorServiceImplTest @Autowired constructor(
 
    @Test
    fun `test that partial update Author throws IllegalStateException when Author does not exist in the database`(){
-    every {
-        authorService.partialUpdate(any(),any())
-    } answers {
-        testAuthorEntityA(id=999)
-    }
+      assertThrows<IllegalStateException> {
+         val nonExistingAuthorId = 999
+         val updateAuthor = testAuthorEntityB(id=nonExistingAuthorId)
+         underTest.fullUpdate(nonExistingAuthorIdm updateAuthor)
   }
 }
