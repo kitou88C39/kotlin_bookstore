@@ -109,6 +109,9 @@ class AuthorServiceImplTest @Autowired constructor(
          val updateAuthor = underTest.partialUpdate(existingAuthor.id!!, AuthorUpdateRequest(name = newName))
          val expected = existingAuthor.copy(name = newName)
          assertThat(updatedAuthor).isEqualTo(expected)
+
          authorRepository.findByIdOrNull(existingAuthorId)
+         val retrievedAuthor = authorRepository.findByIdOrNull(existingAuthorId)
+         assertThat(updatedAuthor).isEqualTo(expected)
    }
 }
