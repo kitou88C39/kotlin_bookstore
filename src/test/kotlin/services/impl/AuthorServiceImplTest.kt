@@ -98,13 +98,13 @@ class AuthorServiceImplTest @Autowired constructor(
    @Test
    fun `test that partial update Author throws does not update Author when all values exist are null`(){
          val existingAuthor = authorRepository.save(testAuthorEntityA())
-         val updateAuthor = underTest.partialUpdate(existingAuthor.id!!, AuthorUpdateAuthor())
+         val updateAuthor = underTest.partialUpdate(existingAuthor.id!!, AuthorUpdateRequest())
          assertThat(updateAuthor).isEqualTo(existingAuthor)
   }
    @Test
-   fun `test that partial update Author throws does not update Author when all values exist are null`(){
+   fun `test that partial update Author updates author name`(){
          val existingAuthor = authorRepository.save(testAuthorEntityA())
-         val updateAuthor = underTest.partialUpdate(existingAuthor.id!!, AuthorUpdateAuthor())
+         val updateAuthor = underTest.partialUpdate(existingAuthor.id!!, AuthorUpdateRquest())
          assertThat(updateAuthor).isEqualTo(existingAuthor)
    }
 }
