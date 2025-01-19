@@ -91,13 +91,13 @@ class AuthorServiceImplTest @Autowired constructor(
       assertThrows<IllegalStateException> {
          val nonExistingAuthorId = 999L
          val updateRequest = testAuthorUpdateRequestA(id=nonExistingAuthorId)
-         underTest.partialUpdate(nonExistingAuthorIdm updateAuthor)
+         underTest.partialUpdate(nonExistingAuthorId, updateAuthor)
   }
 }
 
 @Test
 fun `test that partial update Author throws does not update Author when all values exist are null`(){
          val existingAuthor = authorRepository.save(testAuthorEntityA())
-         
+         underTest.partialUpdate(existingAuthor.id!!, AuthorUpdateAuthor())
   }
 }
