@@ -194,9 +194,9 @@ fun `test that full update Author return HTTP 400 on IllegalStateException`(){
     }
 
 @Test
-fun `test that full update Author return HTTP 400 on IllegalStateException`(){
+fun `test that partial update Author return HTTP 400 on IllegalStateException`(){
     every {
-        authorService.fullUpdate(any(),any())
+        authorService.partialUpdate(any(),any())
     } throws(IllegalStateException)
     
     mockMvc.put("${AUTHORS_BASE_URL}/999"){
