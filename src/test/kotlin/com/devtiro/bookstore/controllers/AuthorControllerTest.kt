@@ -210,11 +210,13 @@ fun `test that partial update Author return HTTP 400 on IllegalStateException`()
     }
 
 @Test
-fun `test that partial update Author return HTTP 400 on IllegalStateException`(){
+fun `test that partial update Author return HTTP 200 and update Author`(){
     every {
         authorService.partialUpdate(any(),any())
-    } throws(IllegalStateException)
-    
+    } answers {
+        testAuthorEntityA(id=999)
+    }
+
     mockMvc.pacth("${AUTHORS_BASE_URL}/999"){
         contentType = MediaType.APPLICATION_JSON
         accept = MediaType.APPLICATION_JSON
