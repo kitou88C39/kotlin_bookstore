@@ -234,7 +234,7 @@ fun `test that partial update Author return HTTP 200 and update Author`(){
 }
 
 @Test
-fun `test that partial update Author return HTTP 200 and update Author`(){
+fun `test that partial update Author throws IllegalStateException when Author does not exist in the database`(){
     every {
         authorService.partialUpdate(any(),any())
     } answers {
