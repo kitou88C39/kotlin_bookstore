@@ -225,5 +225,10 @@ fun `test that partial update Author return HTTP 200 and update Author`(){
         )
     } andExpect {
         status { isBadRequest()}
+        content { jsonPath ( "$.id", equalTo(999))}
+        content { jsonPath ( "$.name", equalTo("John Doe"))}
+        content { jsonPath ( "$.age", equalTo(30))}
+        content { jsonPath ( "$.description", equalTo("Some description"))}
+        content { jsonPath ( "$.image", equalTo("author-image.jpeg"))}   
     }
 }
