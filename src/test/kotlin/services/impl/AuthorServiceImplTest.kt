@@ -91,6 +91,6 @@ class AuthorServiceImplTest @Autowired constructor(
       assertThrows<IllegalStateException> {
          val nonExistingAuthorId = 999
          val updateAuthor = testAuthorEntityB(id=nonExistingAuthorId)
-         underTest.fullUpdate(nonExistingAuthorIdm updateAuthor)
+         underTest.partialUpdate(nonExistingAuthorIdm updateAuthor)
   }
 }
