@@ -115,4 +115,10 @@ class AuthorServiceImplTest @Autowired constructor(
 
          assertThat(updatedAuthor).isEqualTo(expected)
    }
+
+   private fun assertThatAuthorPartialUpdateIsUpdaed(
+      existingAuthor: AuthorEntity,
+      expectedAuthor: AuthorEntity,
+      authorUpdate: AuthorUpdateRequest
+   )
 }
