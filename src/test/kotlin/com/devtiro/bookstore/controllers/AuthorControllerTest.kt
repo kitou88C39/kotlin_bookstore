@@ -197,6 +197,15 @@ fun `test that full update Author return HTTP 400 on IllegalStateException`(){
 fun `test that partial update Author return HTTP 400 on IllegalStateException`(){
     every {
         authorService.partialUpdate(any(),any())
+    } throws(IllegalStateException)
+    
+    mockMvc.put("${AUTHORS_BASE_URL}/999"){
+        contentType = MediaType.APPLICATION_JSON
+        accept = MediaType.APPLICATION_JSON
+        content = objectMapper.writeValueAsString(testAuthorDtoA(id=999))
+    
+    
+    
     } answers {
         testAuthorEntityA(id=999)
     }
