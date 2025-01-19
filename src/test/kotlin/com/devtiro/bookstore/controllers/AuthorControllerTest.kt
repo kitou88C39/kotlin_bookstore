@@ -92,7 +92,7 @@ fun `test that list returns an empty list and HTTP 200 when no author in the dat
         authorService.list()
     } answers {
         enptyList()
-    }
+}
 
     mockMvc.get("AUTHORS_BASE_URL"){
         contentType = MediaType.APPLICATION_JSON
@@ -224,11 +224,20 @@ fun `test that partial update Author return HTTP 200 and update Author`(){
             testAuthorUpdateRequestDtoA(id=999L)
         )
     } andExpect {
-        status { isBadRequest()}
+        status { isOk()}
         content { jsonPath ( "$.id", equalTo(999))}
         content { jsonPath ( "$.name", equalTo("John Doe"))}
         content { jsonPath ( "$.age", equalTo(30))}
         content { jsonPath ( "$.description", equalTo("Some description"))}
         content { jsonPath ( "$.image", equalTo("author-image.jpeg"))}   
+    }
+}
+
+@Test
+fun `test that partial update Author return HTTP 200 and update Author`(){
+    every {
+        authorService.partialUpdate(any(),any())
+    } answers {
+        testAuthorEntityA(id=999)
     }
 }
