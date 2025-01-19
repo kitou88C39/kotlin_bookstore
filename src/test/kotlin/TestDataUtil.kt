@@ -27,7 +27,7 @@ fun testAuthorEntityB(id: Long? = null) = AuthorEntity(
     image = "author-image.jpeg",
 )
 
-fun testAuthorEntityB(id: Long? = null) = AuthorEntity(
+fun testAuthorUpdateRequestDtoA(id: Long? = null) = AuthorUpdateRequestDto(
     id = null,
     name = "John Doe",
     age = 30,
