@@ -110,8 +110,9 @@ class AuthorServiceImplTest @Autowired constructor(
          val expected = existingAuthor.copy(name = newName)
          assertThat(updatedAuthor).isEqualTo(expected)
 
-         authorRepository.findByIdOrNull(existingAuthorId)
          val retrievedAuthor = authorRepository.findByIdOrNull(existingAuthorId)
+         assertThat(retrievedAuthor).isNotNull()
+
          assertThat(updatedAuthor).isEqualTo(expected)
    }
 }
