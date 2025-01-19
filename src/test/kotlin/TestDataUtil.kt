@@ -35,7 +35,7 @@ fun testAuthorUpdateRequestDtoA(id: Long? = null) = AuthorUpdateRequestDto(
     image = "author-image.jpeg",
 )
 
-fun testAuthorUpdateRequestDtoA(id: Long? = null) = AuthorUpdateRequestDto(
+fun testAuthorUpdateRequest(id: Long? = null) = AuthorUpdateRequest(
     id = null,
     name = "John Doe",
     age = 30,
