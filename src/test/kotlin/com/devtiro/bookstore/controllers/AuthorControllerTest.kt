@@ -192,4 +192,18 @@ fun `test that full update Author return HTTP 400 on IllegalStateException`(){
     }}.andExpect {
         status { isBadRequest() }
     }
+
+@Test
+fun `test that full update Author return HTTP 400 on IllegalStateException`(){
+    every {
+        authorService.fullUpdate(any(),any())
+    } throws(IllegalStateException)
+    
+    mockMvc.put("${AUTHORS_BASE_URL}/999"){
+        contentType = MediaType.APPLICATION_JSON
+        accept = MediaType.APPLICATION_JSON
+        content = objectMapper.writeValueAsString(testAuthorDtoA(id=999))
+    }}.andExpect {
+        status { isBadRequest() }
+    }
 }
