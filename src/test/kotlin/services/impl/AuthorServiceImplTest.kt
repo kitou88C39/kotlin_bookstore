@@ -137,3 +137,19 @@ class AuthorServiceImplTest @Autowired constructor(
       assertThat(updatedAuthor).isEqualTo(expected)
    }
 }
+@Test
+   fun `test that partial update Author updates author name`(){
+      val newName = "New Name"
+      val AuthorUpdateRequest = authorUpdateRequest(
+         name = newName
+      )
+      
+      val AuthorUpdateRequest = authorUpdateRequest(
+         name = newName
+      )
+      assertThatAuthorPartialUpdateIsUpdaed(
+      existingAuthor = existingAuthor,
+      expectedAuthor = expectedAuthor,
+      authorUpdateRequest = authorUpdateRequest
+      )
+   }
