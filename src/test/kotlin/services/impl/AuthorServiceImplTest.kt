@@ -140,13 +140,13 @@ class AuthorServiceImplTest @Autowired constructor(
 
 @Test
 fun `test that partial update Author updates author age`(){
-   val newDescription = "A new description"
+   val newAge = "New Age"
    val existingAuthor = existingAuthorEntityA()
    val expectedAuthor = existingAuthor.copy(
-         description = newAge
+         age = newAge
       )
       val AuthorUpdateRequest = authorUpdateRequest(
-         description = newDescription
+         age = newAge
       )
       assertThatAuthorPartialUpdateIsUpdaed(
          existingAuthor = existingAuthor,
@@ -156,11 +156,11 @@ fun `test that partial update Author updates author age`(){
 }
 
 @Test
-fun `test that partial update Author updates author age`(){
+fun `test that partial update Author updates author description`(){
    val newDescription = "A new description"
    val existingAuthor = existingAuthorEntityA()
    val expectedAuthor = existingAuthor.copy(
-         description = newAge
+         description = newDescription
       )
       val AuthorUpdateRequest = authorUpdateRequest(
          description = newDescription
