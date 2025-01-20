@@ -147,8 +147,8 @@ class AuthorServiceImplTest @Autowired constructor(
          age = newAge
       )
       assertThatAuthorPartialUpdateIsUpdaed(
-      existingAuthor = existingAuthor,
-      expectedAuthor = expectedAuthor,
-      authorUpdateRequest = authorUpdateRequest,
+         existingAuthor = existingAuthor,
+         expectedAuthor = expectedAuthor,
+         authorUpdateRequest = authorUpdateRequest,
       )
    }
