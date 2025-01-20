@@ -173,14 +173,14 @@ fun `test that partial update Author updates author description`(){
 }
 
 @Test
-fun `test that partial update Author updates author description`(){
-   val newDescription = "A new description"
+fun `test that partial update Author updates author image`(){
+   val newImage = "A new image"
    val existingAuthor = existingAuthorEntityA()
    val expectedAuthor = existingAuthor.copy(
-         description = newDescription
+         image = newImage
       )
       val AuthorUpdateRequest = authorUpdateRequest(
-         description = newDescription
+         image = "newImage"
       )
       assertThatAuthorPartialUpdateIsUpdaed(
          existingAuthor = existingAuthor,
