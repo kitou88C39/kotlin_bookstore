@@ -89,31 +89,31 @@ class AuthorServiceImplTest @Autowired constructor(
    @Test
    fun `test that partial update Author throws IllegalStateException when Author does not exist in the database`(){
       assertThrows<IllegalStateException> {
-         val nonExistingAuthorId = 999L
-         val updateRequest = testAuthorUpdateRequestA(id=nonExistingAuthorId)
-         underTest.partialUpdate(nonExistingAuthorId, updateAuthor)
+      val nonExistingAuthorId = 999L
+      val updateRequest = testAuthorUpdateRequestA(id=nonExistingAuthorId)
+      underTest.partialUpdate(nonExistingAuthorId, updateAuthor)
   }
 }
 
    @Test
    fun `test that partial update Author throws does not update Author when all values exist are null`(){
-         val existingAuthor = authorRepository.save(testAuthorEntityA())
-         val updateAuthor = underTest.partialUpdate(existingAuthor.id!!, AuthorUpdateRequest())
-         assertThat(updateAuthor).isEqualTo(existingAuthor)
+      val existingAuthor = authorRepository.save(testAuthorEntityA())
+      val updateAuthor = underTest.partialUpdate(existingAuthor.id!!, AuthorUpdateRequest())
+      assertThat(updateAuthor).isEqualTo(existingAuthor)
   }
    @Test
    fun `test that partial update Author updates author name`(){
-         val existingAuthor = authorRepository.save(testAuthorEntityA())
-         val newName = "New Name"
-         val existingAuthorId = existingAuthor.id!!
-         val updateAuthor = underTest.partialUpdate(existingAuthor.id!!, AuthorUpdateRequest(name = newName))
-         val expected = existingAuthor.copy(name = newName)
-         assertThat(updatedAuthor).isEqualTo(expected)
+      val existingAuthor = authorRepository.save(testAuthorEntityA())
+      val newName = "New Name"
+      val existingAuthorId = existingAuthor.id!!
+      val updateAuthor = underTest.partialUpdate(existingAuthor.id!!, AuthorUpdateRequest(name = newName))
+      val expected = existingAuthor.copy(name = newName)
+      assertThat(updatedAuthor).isEqualTo(expected)
 
-         val retrievedAuthor = authorRepository.findByIdOrNull(existingAuthorId)
-         assertThat(retrievedAuthor).isNotNull()
+      val retrievedAuthor = authorRepository.findByIdOrNull(existingAuthorId)
+      assertThat(retrievedAuthor).isNotNull()
 
-         assertThat(updatedAuthor).isEqualTo(expected)
+      assertThat(updatedAuthor).isEqualTo(expected)
    }
 
    private fun assertThatAuthorPartialUpdateIsUpdaed(
@@ -121,16 +121,16 @@ class AuthorServiceImplTest @Autowired constructor(
       expectedAuthor: AuthorEntity,
       authorUpdate: AuthorUpdateRequest
    ) {
-      val existingAuthor = authorRepository.save(testAuthorEntityA())
-         val newName = "New Name"
-         val existingAuthorId = existingAuthor.id!!
-         val updateAuthor = underTest.partialUpdate(existingAuthor.id!!, AuthorUpdateRequest(name = newName))
-         val expected = existingAuthor.copy(name = newName)
-         assertThat(updatedAuthor).isEqualTo(expected)
+      val savedexistingAuthor = authorRepository.save(testAuthorEntityA())
+      val newName = "New Name"
+      val existingAuthorId = existingAuthor.id!!
+      val updateAuthor = underTest.partialUpdate(existingAuthor.id!!, AuthorUpdateRequest(name = newName))
+      val expected = existingAuthor.copy(name = newName)
+      assertThat(updatedAuthor).isEqualTo(expected)
 
-         val retrievedAuthor = authorRepository.findByIdOrNull(existingAuthorId)
-         assertThat(retrievedAuthor).isNotNull()
+      val retrievedAuthor = authorRepository.findByIdOrNull(existingAuthorId)
+      assertThat(retrievedAuthor).isNotNull()
 
-         assertThat(updatedAuthor).isEqualTo(expected)
+      assertThat(updatedAuthor).isEqualTo(expected)
    }
 }
