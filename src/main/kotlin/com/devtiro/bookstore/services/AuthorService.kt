@@ -13,4 +13,6 @@ interface AuthorService {
     fun fullUpdate(id: Long, authorEntity: AuthorEntity): AuthorEntity
 
     fun fullUpdate(id: Long, AuthorUpdate: AuthorUpdateRequest): AuthorEntity
+
+    fun delete(id: Long)
 }

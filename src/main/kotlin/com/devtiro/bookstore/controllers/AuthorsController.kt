@@ -60,7 +60,7 @@ class AuthorController(private val authorService: AuthorService) {
     }
 
     @DeleteMapping(path = ["/{id}"])
-    fun deleteAuthor(@PathVariable("id") id:Long, @RequestBody authorUpdateRequest: AuthorUpdateRequest): ResponseEntity<AuthorDto> {
+    fun deleteAuthor(@PathVariable("id") id:Long): ResponseEntity<Unit> {
         return try {
             val updatedAuthor = authorService.fullUpdate(id, authorDto.toAtuthorEntity())
             ResponseEntity(updatedAuthor.toAtuthorDto(), HttpStatus.OK)
