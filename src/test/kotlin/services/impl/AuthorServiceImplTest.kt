@@ -196,9 +196,9 @@ fun `test that partial update Author updates author description`(){
    val expectedAuthor = existingAuthor.copy(
          description = newDescription
       )
-      val AuthorUpdateRequest = authorUpdateRequest(
-         description = newDescription
-      )
+      val updateAuthor = underTest.partialUpdate(
+         existingAuthorId = authorUpdateRequest)
+         
       val expected = expectedAuthor.copy(id=existingAuthorId)
       assertThat(updateAuthor).isEqualTo(expected)
 
