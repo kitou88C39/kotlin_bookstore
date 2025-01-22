@@ -42,4 +42,9 @@ class AuthorServiceImpl (private val authorRepository: authorRepository): Author
       )
       return authorRepository.save(updateAuthor)
    }
+
+   
+   override fun delete(id:Long){
+
+   }
 }

@@ -61,12 +61,6 @@ class AuthorController(private val authorService: AuthorService) {
 
     @DeleteMapping(path = ["/{id}"])
     fun deleteAuthor(@PathVariable("id") id:Long): ResponseEntity<Unit> {
-        return try {
-            val updatedAuthor = authorService.fullUpdate(id, authorDto.toAtuthorEntity())
-            ResponseEntity(updatedAuthor.toAtuthorDto(), HttpStatus.OK)
-
-        } catch (ex: IllegalStateException) {
-            ResponseEntity(HttpStatus.BAD_REQUEST)
-        }
+        
     }
 }
