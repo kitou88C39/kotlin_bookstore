@@ -188,3 +188,7 @@ fun `test that partial update Author updates author image`(){
          authorUpdateRequest = authorUpdateRequest,
       )
 }
+
+@Test
+fun `test that partial update Author updates author image`(){
+}
