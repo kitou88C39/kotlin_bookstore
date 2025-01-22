@@ -199,10 +199,12 @@ fun `test that partial update Author updates author description`(){
       val AuthorUpdateRequest = authorUpdateRequest(
          description = newDescription
       )
+      val expected = expectedAuthor.copy(id=existingAuthorId)
+      assertThat(updateAuthor).isEqualTo(expected)
+
       val retrievedAuthor = authorRepository.findByIdOrNull(existingAuthorId)
       assertThat(retrievedAuthor).isNotNull()
       assertThat(retrievedAuthor).isEqualTo(expected)
-      
 }
 
 @Test
