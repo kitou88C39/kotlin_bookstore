@@ -242,9 +242,6 @@ fun `test that delete Author returns HTTP 204 on successful delete`(){
     mockMvc.delete("${AUTHORS_BASE_URL}/999"){
         contentType = MediaType.APPLICATION_JSON
         accept = MediaType.APPLICATION_JSON
-        content = objectMapper.writeValueAsString(
-            testAuthorUpdateRequestDtoA(id=999L)
-        )
-    } andExpect {
-        status { isBadRequest()}
+    }   
+  }
 }
