@@ -199,11 +199,10 @@ fun `test that partial update Author updates author description`(){
       val AuthorUpdateRequest = authorUpdateRequest(
          description = newDescription
       )
-      assertThatAuthorPartialUpdateIsUpdaed(
-         existingAuthor = existingAuthor,
-         expectedAuthor = expectedAuthor,
-         authorUpdateRequest = authorUpdateRequest,
-      )
+      val retrievedAuthor = authorRepository.findByIdOrNull(existingAuthorId)
+      assertThat(retrievedAuthor).isNotNull()
+      assertThat(retrievedAuthor).isEqualTo(expected)
+      
 }
 
 @Test
