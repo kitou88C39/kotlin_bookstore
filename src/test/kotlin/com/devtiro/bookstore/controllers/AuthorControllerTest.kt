@@ -234,12 +234,12 @@ fun `test that partial update Author return HTTP 200 and update Author`(){
 }
 
 @Test
-fun `test that partial update Author return HTTP 400 on IllegalStateException`(){
+fun `test that delete Author returns HTTP 204 on successful delete`(){
     every {
-        authorService.partialUpdate(any(),any())
-    } throws(IllegalStateException)
+        authorService.delete(any())
+    } answers {}
     
-    mockMvc.pacth("${AUTHORS_BASE_URL}/999"){
+    mockMvc.delete("${AUTHORS_BASE_URL}/999"){
         contentType = MediaType.APPLICATION_JSON
         accept = MediaType.APPLICATION_JSON
         content = objectMapper.writeValueAsString(
