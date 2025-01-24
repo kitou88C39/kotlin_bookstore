@@ -186,9 +186,10 @@ fun `test that partial update Author updates author image`(){
          existingAuthor = existingAuthor,
          expectedAuthor = expectedAuthor,
          authorUpdateRequest = authorUpdateRequest,
+      )
+   }  
 
-   class AuthorServiceImplTest@Autowired constructor(
-      private fun assertThatAuthorPartialUpdateIsUpdaed (
+   private fun assertThatAuthorPartialUpdateIsUpdaed (
       
          existingAuthor: AuthorEntity,
          authorUpdateRequest: AuthorUpdateRequest
