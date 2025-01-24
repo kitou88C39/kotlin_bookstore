@@ -243,7 +243,7 @@ fun `test that delete Author returns HTTP 204 on successful delete`(){
         contentType = MediaType.APPLICATION_JSON
         accept = MediaType.APPLICATION_JSON
     } .andExpect {
-        status { isBadRequest()}
+        status { isNoContent()}
     }
   }
 }
