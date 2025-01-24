@@ -215,5 +215,9 @@ fun `test that partial update Author updates author image`(){
    val existingAuthorId = existingAuthor.id!!
 
    underTest.delete(existingAuthorsId)
-}
+
+   assertThat(
+      authorRepository.existById(existingAuthorsId)
+   ).isTrue()
+ }
 }
