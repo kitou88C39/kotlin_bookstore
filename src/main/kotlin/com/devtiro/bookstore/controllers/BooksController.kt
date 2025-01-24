@@ -6,7 +6,7 @@ import org.springframework.web.bind.annoatation.*
 class BooksController {
 
     @PutMapping(path = ["/v1/books/{isbn}"])
-    fun createFullUpdateBook(@PathVariable("isbn"):isbn String){
+    fun createFullUpdateBook(@PathVariable("isbn")isbn: String, @RequestBody book: BookSummaryDto ){
 
     }
 }
