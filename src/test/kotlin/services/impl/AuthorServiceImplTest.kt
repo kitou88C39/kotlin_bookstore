@@ -189,10 +189,11 @@ fun `test that partial update Author updates author image`(){
       )
 }
 
-
+      val savedExistingAuthor = authorRepository.save(existingAuthor)
+      val existingAuthorsId = savedExistingAuthor.id!!
 
       val updateAuthor = underTest.partialUpdate(
-         existingAuthorId = authorUpdateRequest)
+         existingAuthorId, authorUpdateRequest)
 
       val expected = expectedAuthor.copy(id=existingAuthorId)
       assertThat(updateAuthor).isEqualTo(expected)
