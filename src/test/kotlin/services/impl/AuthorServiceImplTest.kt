@@ -224,11 +224,11 @@ fun `test that partial update Author updates author image`(){
  @Test
 fun `test that delete deletes an non-existing Author in the database`(){
    
-
-   underTest.delete(existingAuthorsId)
+   val nonExistingId = 999L
+   underTest.delete(nonExistingId)
 
    assertThat(
-      authorRepository.existById(existingAuthorsId)
-   ).isFalse()
- }
+      authorRepository.existById(nonExistingId)
+   ).isTrue()
+  }
 }
