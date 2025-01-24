@@ -4,7 +4,7 @@ import com.devtiro.bookstore.services.AuthorService
 import com.devtiro.bookstore.repositories.authorRepository
 import com.devtiro.bookstore.services.AuthorService
 import org.springframework.stereotype.Service
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class AuthorServiceImpl (private val authorRepository: authorRepository): AuthorService {
