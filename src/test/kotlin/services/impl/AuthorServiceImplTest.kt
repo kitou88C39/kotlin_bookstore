@@ -3,10 +3,13 @@ package com.devtiro.bookstore.services.impl
 import com.devtiro.bookstore.testAuthorEntityA
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 import org.springframework.beans.factory.annoatation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.database.repository.findByIdOrNull
 
 @SpringBootTest
+@Transactional
 class AuthorServiceImplTest @Autowired constructor(
    private underTest: AuthorServiceImpl,
    private val authorRepository: authorRepository){
@@ -229,6 +232,6 @@ fun `test that delete deletes an non-existing Author in the database`(){
 
    assertThat(
       authorRepository.existById(nonExistingId)
-   ).isTrue()
-  }
+   ).isFalse()
+ }
 }
