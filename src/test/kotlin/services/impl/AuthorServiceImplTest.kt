@@ -186,8 +186,11 @@ fun `test that partial update Author updates author image`(){
          existingAuthor = existingAuthor,
          expectedAuthor = expectedAuthor,
          authorUpdateRequest = authorUpdateRequest,
-      )
-}
+
+   class AuthorServiceImplTest@Autowired constructor(
+      private fun assertThatAuthorPartialUpdateIsUpdaed (
+      
+   ){
 
       val savedExistingAuthor = authorRepository.save(existingAuthor)
       val existingAuthorsId = savedExistingAuthor.id!!
