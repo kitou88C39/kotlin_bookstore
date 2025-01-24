@@ -4,5 +4,5 @@ import com.devtiro.bookstore.domain.BookSummary
 
 interface BookService {
 
-    fun createUpdate(isbn: String, bookSummary: BookSummary)
+    fun createUpdate(isbn: String, bookSummary: BookSummary):Pair<BookEntity, Boolean>
 }
