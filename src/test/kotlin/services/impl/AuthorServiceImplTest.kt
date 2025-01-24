@@ -187,7 +187,7 @@ fun `test that partial update Author updates author image`(){
          expectedAuthor = expectedAuthor,
          authorUpdateRequest = authorUpdateRequest,
       )
-   }  
+   
 
    private fun assertThatAuthorPartialUpdateIsUpdaed (
       
@@ -211,4 +211,6 @@ fun `test that partial update Author updates author image`(){
 
 @Test
 fun `test that partial update Author updates author image`(){
+   val existingAuthor = authorRepository.save(existingAuthorEntityA())
+}
 }
