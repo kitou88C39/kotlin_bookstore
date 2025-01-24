@@ -222,7 +222,7 @@ fun `test that partial update Author updates author image`(){
  }
 
  @Test
-fun `test that partial update Author updates author image`(){
+fun `test that delete deletes an non-existing Author in the database`(){
    val existingAuthor = authorRepository.save(existingAuthorEntityA())
    val existingAuthorId = existingAuthor.id!!
 
