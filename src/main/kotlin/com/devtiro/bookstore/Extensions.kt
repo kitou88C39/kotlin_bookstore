@@ -13,11 +13,15 @@ fun AuthorEntity.toAuthorDto() = AuthorDto(
     image=this.image
 )
 
-fun AuthorEntity.toAuthorSummaryDto() = AuthorSummaryDto(
-    id=this.id!!,
-    name=this.name,
-    image=this.image
-)
+fun AuthorEntity.toAuthorSummaryDto(): AuthorSummaryDto{
+    val authorId = this.id
+    checkNotNull(authorId)
+    return AuthorSummaryDto(
+        id=this.id,
+        name=this.name,
+        image=this.image
+    )
+}
 
 fun AuthorDto.toAuthorEntity() = AuthorEntity(
     id=this.id,
