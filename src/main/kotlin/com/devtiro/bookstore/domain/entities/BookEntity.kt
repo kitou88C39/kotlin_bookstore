@@ -7,7 +7,7 @@ import jakarta.persistence.Table
 
 @Entity
 @Table(name="books")
-data class Book (
+data class BookEntity (
     @Id
     @Column(name="isbn")
     var isbn: String,
@@ -23,5 +23,5 @@ data class Book (
 
     @ManyToOne(cascade=[CascadeType.DETACH])
     @JoinColumn(name="author_id")
-    var author: Author
+    var authorEntity: AuthorEntity
     )
