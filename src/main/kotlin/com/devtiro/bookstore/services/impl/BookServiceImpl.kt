@@ -11,7 +11,9 @@ class BookServiceImpl(
     override fun createUpdate(isbn: String, bookSummary: BookSummary): Pair<BookEntity, Boolean> {
         val normalisedBook = bookSummary.copy(isbn = isbn)
         val isExists = bookRepository.existsById(isbn)
-        authorRepository.findByIdOrNull(normalisedBook.author.id)
+
+        val author = authorRepository.findByIdOrNull(normalisedBook.author.id)
+        checkNotNull(author)
     }
 
 }
