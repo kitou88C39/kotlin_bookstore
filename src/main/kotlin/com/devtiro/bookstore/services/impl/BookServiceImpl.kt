@@ -14,6 +14,9 @@ class BookServiceImpl(
 
         val author = authorRepository.findByIdOrNull(normalisedBook.author.id)
         checkNotNull(author)
+
+        val saveBook = bookRepository.save(normalisedBook.toBookEntity(author))
+        return Pair(saveBook, !isExists)
     }
 
 }
