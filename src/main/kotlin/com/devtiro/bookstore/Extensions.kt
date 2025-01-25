@@ -13,11 +13,9 @@ fun AuthorEntity.toAuthorDto() = AuthorDto(
     image=this.image
 )
 
-fun AuthorEntity.toAuthorDto() = AuthorDto(
-    id=this.id,
+fun AuthorEntity.toAuthorSummaryDto() = AuthorSummaryDto(
+    id=this.id!!,
     name=this.name,
-    age=this.age,
-    description=this.description,
     image=this.image
 )
 
