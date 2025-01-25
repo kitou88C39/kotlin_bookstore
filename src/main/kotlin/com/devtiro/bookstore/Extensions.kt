@@ -9,7 +9,7 @@ fun AuthorEntity.toAuthorDto() = AuthorDto(
     age=this.age,
     description=this.description,
     image=this.image
-    )
+)
 
 fun AuthorDto.toAuthorEntity() = AuthorEntity(
     id=this.id,
@@ -17,7 +17,7 @@ fun AuthorDto.toAuthorEntity() = AuthorEntity(
     age=this.age,
     description=this.description,
     image=this.image
-    )
+)
 
 fun AuthorUpdateRequestDto.toAuthorUpdateRequestDto() = AuthorUpdateRequest(
     id=this.id,
@@ -25,4 +25,12 @@ fun AuthorUpdateRequestDto.toAuthorUpdateRequestDto() = AuthorUpdateRequest(
     age=this.age,
     description=this.description,
     image=this.image
-    )
+)
+
+fun AuthorEntity.toAuthorDto() = AuthorDto(
+    id=this.id,
+    name=this.name,
+    age=this.age,
+    description=this.description,
+    image=this.image
+)
