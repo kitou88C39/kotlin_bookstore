@@ -1,7 +1,9 @@
 package com.devtiro.bookstore
 
 import com.devtiro.bookstore.domain.dto.AuthorDto
+import com.devtiro.bookstore.domain.dto.BookSummaryDto
 import com.devtiro.bookstore.domain.entities.AuthorEntity
+import com.devtiro.bookstore.domain.entities.BookEntity
 
 fun AuthorEntity.toAuthorDto() = AuthorDto(
     id=this.id,
@@ -10,6 +12,8 @@ fun AuthorEntity.toAuthorDto() = AuthorDto(
     description=this.description,
     image=this.image
 )
+
+
 
 fun AuthorDto.toAuthorEntity() = AuthorEntity(
     id=this.id,
