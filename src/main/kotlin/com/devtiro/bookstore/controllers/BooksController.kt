@@ -9,6 +9,7 @@ class BooksController(val BookService: BookService) {
 
     @PutMapping(path = ["/v1/books/{isbn}"])
     fun createFullUpdateBook(@PathVariable("isbn")isbn: String, @RequestBody book: BookSummaryDto ){
-
+        val (savedBook, siCreated) = BookService.createUpdate(isbn, book.toBookSummary())
+        val responseCode = if(isCreated) HttpStatus.CREATED else HttpStatus.OK
     }
 }
