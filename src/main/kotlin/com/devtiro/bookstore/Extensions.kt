@@ -28,9 +28,9 @@ fun AuthorUpdateRequestDto.toAuthorUpdateRequestDto() = AuthorUpdateRequest(
 )
 
 fun BookSummary.toBookEntity(author: AuthorEntity) = BookEntity(
-    id=this.id,
-    name=this.name,
-    age=this.age,
+    isbn=this.isbn,
+    title=this.title,
     description=this.description,
-    image=this.image
+    image=this.image,
+    authorEntity=this.authorEntity
 )
