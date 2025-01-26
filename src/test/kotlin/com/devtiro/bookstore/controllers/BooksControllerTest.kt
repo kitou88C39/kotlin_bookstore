@@ -21,11 +21,13 @@ class BooksControllerTest @Autowired constructor　(
     @Test
     fun `test that createFullUpdateBook return HTTP 201 when book is created`(){
         val isbn = "978-089-230342-0777"
+        val author = testAuthorEntityA()
+        val book = testBookEntityA(isbn, author)
 
-    every {
-        BookService.createUpdate(isbn, any())
-    } answers {
-        Pair()
+        every {
+            BookService.createUpdate(isbn, any())
+        } answers {
+            Pair()
     }
   }
 }
