@@ -17,4 +17,12 @@ class BooksControllerTest @Autowired constructor(
     @MockkBean val authorService: AuthorService
     ) {
     val objectMapper = ObjectMapper()
+
+    @Test
+fun `test that create Author saves the Author`(){
+    every {
+        authorService.save(any())
+    } answers {
+        firstArg()
     }
+}
