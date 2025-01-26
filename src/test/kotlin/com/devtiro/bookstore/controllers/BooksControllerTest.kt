@@ -29,12 +29,8 @@ class BooksControllerTest @Autowired constructor　(
         } answers {
             Pair(book, true)
     }
-    mockMvc.post("AUTHORS_BASE_URL"){
-        contentType = MediaType.APPLICATION_JSON
-        accept = MediaType.APPLICATION_JSON
-        content = objectMapper.writeValueAsString(
-            testAuthorDtoAuthorDto()
-        )
+    mockMvc.put("/v1/books/${isbn}"){
+        
     }
   }
 }
