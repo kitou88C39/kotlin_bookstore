@@ -23,9 +23,9 @@ class BooksControllerTest @Autowired constructor　(
         val isbn = "978-089-230342-0777"
 
     every {
-        authorService.save(any())
+        BookService.createUpdate(isbn, any())
     } answers {
-        firstArg()
+        Pair()
     }
   }
 }
