@@ -16,9 +16,8 @@ class BooksController(val BookService: BookService) {
 
       } catch(ex: IllegalStateException){
           return ResponseEntity(HttpStatus.INTENAL_SERVER_ERROR)
-        
       } catch(ex: IllegalStateException){
-            
+        return ResponseEntity(HttpStatus.BAD_REQUEST)
     }
   }
 }
