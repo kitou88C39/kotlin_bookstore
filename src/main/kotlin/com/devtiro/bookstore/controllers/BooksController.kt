@@ -14,8 +14,11 @@ class BooksController(val BookService: BookService) {
           val responseCode = if(isCreated) HttpStatus.CREATED else HttpStatus.OK
           return ResponseEntity(saveBook.toBookSummaryDto(), responseCode)
 
-        } catch(ex: IllegalStateException){
+      } catch(ex: IllegalStateException){
+          return ResponseEntity(HttpStatus.INTENAL_SERVER_ERROR)
+        
+      } catch(ex: IllegalStateException){
             
-        }
     }
+  }
 }
