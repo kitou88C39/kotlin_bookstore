@@ -51,10 +51,10 @@ fun testBookEntityA(isbn: String, author: AuthorEntity) = BookEntity(
     authorEntity = author
 )
 
-fun testBookEntityA(isbn: String, author: AuthorEntity) = BookEntity(
+fun testBookSummaryDtoA(isbn: String, author: AuthorSummaryDto) = BookSummaryDto(
     isbn = isbn,
     title = "Test Book A",
     description = "A test book"
     image = "book-image.jpeg",
-    authorEntity = author
+    author = author
 )
