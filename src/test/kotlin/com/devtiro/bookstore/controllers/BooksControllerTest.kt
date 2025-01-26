@@ -12,17 +12,20 @@ import org.springframework.test.web.servlet.MockMvc
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class BooksControllerTest @Autowired constructor(
+class BooksControllerTest @Autowired constructor　(
     private val mockMvc: MockMvc,
     @MockkBean val authorService: AuthorService
     ) {
     val objectMapper = ObjectMapper()
 
     @Test
-fun `test that create Author saves the Author`(){
+    fun `test that createFullUpdateBook return HTTP 201 when book is created`(){
+        val isbn = "978-089-230342-0777"
+
     every {
         authorService.save(any())
     } answers {
         firstArg()
     }
+  }
 }
