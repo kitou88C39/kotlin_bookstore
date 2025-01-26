@@ -36,7 +36,9 @@ class BooksControllerTest @Autowired constructor　(
         mockMvc.put("/v1/books/${isbn}"){
             contentType = MediaType.APPLICATION_JSON
             accept = MediaType.APPLICATION_JSON
-            content = objectMapper.writeValueAsString()
+            content = objectMapper.writeValueAsString(bookSummaryDto)
+        }.andExpect {
+            status { isOk()}
+        }
     }
-  }
 }
