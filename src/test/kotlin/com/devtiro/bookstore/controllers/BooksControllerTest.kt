@@ -28,9 +28,12 @@ class BooksControllerTest @Autowired constructor　(
             BookService.createUpdate(isbn, any())
         } answers {
             Pair(book, true)
-    }
-    mockMvc.put("/v1/books/${isbn}"){
-        
+        }
+
+        mockMvc.put("/v1/books/${isbn}"){
+            contentType = MediaType.APPLICATION_JSON
+            accept = MediaType.APPLICATION_JSON
+            content = objectMapper.writeValueAsString()
     }
   }
 }
