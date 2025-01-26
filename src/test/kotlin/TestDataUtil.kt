@@ -43,10 +43,10 @@ fun testAuthorUpdateRequestA(id: Long? = null) = AuthorUpdateRequest(
     image = "author-image.jpeg",
 )
 
-fun testAuthorUpdateRequestA(id: Long? = null) = AuthorUpdateRequest(
-    id = null,
-    name = "John Doe",
-    age = 30,
-    description = "some description"
-    image = "author-image.jpeg",
+fun testBookEntityA(isbn: String, author: AuthorEntity) = BookEntity(
+    isbn = isbn,
+    title = "Test Book A",
+    description = "A test book"
+    image = "book-image.jpeg",
+    authorEntity = author
 )
