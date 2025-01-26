@@ -14,7 +14,7 @@ fun AuthorEntity.toAuthorDto() = AuthorDto(
 )
 
 fun AuthorEntity.toAuthorSummaryDto(): AuthorSummaryDto{
-    val authorId = this.id
+    val authorId = this.id ?:throw InvalidAuthorException()
     checkNotNull(authorId)
     return AuthorSummaryDto(
         id=this.id,
@@ -61,7 +61,7 @@ fun BookSummaryDto.toBookEntity(author: AuthorEntity) = BookSummary(
     author=this.author.toAuthorSummary()
 )
 
-un BookEntity.toBookSummaryDto() = BookSummaryDto(
+fun BookEntity.toBookSummaryDto() = BookSummaryDto(
     isbn=this.isbn,
     title=this.title,
     description=this.description,
