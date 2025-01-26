@@ -21,7 +21,7 @@ class BooksControllerTest @Autowired constructor　(
     @Test
     fun `test that createFullUpdateBook return HTTP 201 when book is created`(){
         val isbn = "978-089-230342-0777"
-        val author = testAuthorEntityA()
+        val author = testAuthorEntityA(id=1)
         val savedBook = testBookEntityA(isbn, author)
 
         val authorSummaryDto = testBookSummaryDtoA(id=1)
@@ -38,7 +38,31 @@ class BooksControllerTest @Autowired constructor　(
             accept = MediaType.APPLICATION_JSON
             content = objectMapper.writeValueAsString(bookSummaryDto)
         }.andExpect {
-            status { isOk()}
+            status { isCreated()}
+        }
+    }
+
+    @Test
+    fun `test that createFullUpdateBook return HTTP 201 when book is created`(){
+        val isbn = "978-089-230342-0777"
+        val author = testAuthorEntityA(id=1)
+        val savedBook = testBookEntityA(isbn, author)
+
+        val authorSummaryDto = testBookSummaryDtoA(id=1)
+        val bookSummaryDto = testBookSummaryDtoA(isbn, authorSummaryDto)
+
+        every {
+            BookService.createUpdate(isbn, any())
+        } answers {
+            Pair(savedBook, true)
+        }
+
+        mockMvc.put("/v1/books/${isbn}"){
+            contentType = MediaType.APPLICATION_JSON
+            accept = MediaType.APPLICATION_JSON
+            content = objectMapper.writeValueAsString(bookSummaryDto)
+        }.andExpect {
+            status { isCreated()}
         }
     }
 }
