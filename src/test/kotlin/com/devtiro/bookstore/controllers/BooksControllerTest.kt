@@ -20,14 +20,14 @@ class BooksControllerTest @Autowired constructor　(
 
     @Test
     fun `test that createFullUpdateBook return HTTP 201 when book is created`(){
-        
+        assertThatUserCreatedUpdated(true){isCreated()}
     }
 
     @Test
     fun `test that createFullUpdateBook return HTTP 201 when book is created`(){
-        
+        assertThatUserCreatedUpdated(true){isCreated()}
     }
-    
+
     private fun assertThatUserCreatedUpdated(isCreated: Boolean, statusCodeAssertion: StatusResultMatchersDsl.() -> Unit) {
         val isbn = "978-089-230342-0777"
         val author = testAuthorEntityA(id=1)
