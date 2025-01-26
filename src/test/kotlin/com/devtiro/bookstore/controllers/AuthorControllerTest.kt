@@ -19,7 +19,7 @@ private const val AUTHORS_BASE_URL = "/v1/authors"
 class AuthorControllerTest @Autowired constructor(
     private val mockMvc: MockMvc,
     @MockBean val authorService: AuthorService
-    ) 
+    ) {
 
     val objectMapper = ObjectMapper()
 
@@ -30,7 +30,7 @@ class AuthorControllerTest @Autowired constructor(
         } answers {
             firstArg()
     }
-
+}
 @Test
 fun `test that create Author saves the Author`(){
     every {
