@@ -24,7 +24,7 @@ class BooksControllerTest @Autowired constructor　(
 
     @Test
     fun `test that createFullUpdateBook return HTTP 200 when book is updated`(){
-        assertThatUserCreatedUpdated(false){isCreated()}
+        assertThatUserCreatedUpdated(false){isOk()}
     }
 
     private fun assertThatUserCreatedUpdated(isCreated: Boolean, statusCodeAssertion: StatusResultMatchersDsl.() -> Unit) {
@@ -65,5 +65,6 @@ class BooksControllerTest @Autowired constructor　(
     @Test
     fun `test that createFullUpdateBook returns HTTP 500 when author in the database does not have an ID`(){
         
-    }
+        @Test
+        fun `test that createFullUpdateBook returns HTTP 500 when author in the database does not have an ID`(){   
 }
