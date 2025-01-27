@@ -1,6 +1,5 @@
 package com.devtiro.bookstore.controllers
 
-
 import com.devtiro.bookstore.services.AuthorService
 import com.devtiro.bookstore.services.BookService
 import com.festerxml.jackson.databind.ObjectMapper
@@ -51,6 +50,8 @@ class BooksControllerTest @Autowired constructor　(
         }
         assertThatUserCreatedUpdated(true)
     }
+
+    private fun assertThatUserCreatedUpdated(isCreated: Boolean, statusCodeAssertion: StatusResultMatchersDsl)
 
     @Test
     fun `test that createFullUpdateBook returns HTTP 500 when author in the database does not have an ID`(){
