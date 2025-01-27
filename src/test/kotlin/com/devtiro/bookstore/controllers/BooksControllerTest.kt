@@ -23,8 +23,8 @@ class BooksControllerTest @Autowired constructor　(
     }
 
     @Test
-    fun `test that createFullUpdateBook return HTTP 201 when book is created`(){
-        assertThatUserCreatedUpdated(true){isCreated()}
+    fun `test that createFullUpdateBook return HTTP 200 when book is updated`(){
+        assertThatUserCreatedUpdated(false){isCreated()}
     }
 
     private fun assertThatUserCreatedUpdated(isCreated: Boolean, statusCodeAssertion: StatusResultMatchersDsl.() -> Unit) {
@@ -36,7 +36,7 @@ class BooksControllerTest @Autowired constructor　(
         val bookSummaryDto = testBookSummaryDtoA(isbn, authorSummaryDto)
 
         every {
-            BookService.createUpdate(isbn, any())
+            bookService.createUpdate(isbn, any())
         } answers {
             Pair(savedBook, isCreated)
         }
@@ -55,6 +55,11 @@ class BooksControllerTest @Autowired constructor　(
         val isbn = "978-089-230342-0777"
         val author = testAuthorEntityA(id=1)
         val savedBook = testBookEntityA(isbn, author)
+        bookService.createUpdate(isbn, any())
+        
+    } answers {
+            Pair(savedBook, isCreated)
+        }
     }
 
     @Test
