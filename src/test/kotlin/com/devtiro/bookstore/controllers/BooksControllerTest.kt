@@ -38,7 +38,7 @@ class BooksControllerTest @Autowired constructor　(
         every {
             BookService.createUpdate(isbn, any())
         } answers {
-            Pair(savedBook, true)
+            Pair(savedBook, isCreated)
         }
 
         mockMvc.put("/v1/books/${isbn}"){
@@ -51,7 +51,11 @@ class BooksControllerTest @Autowired constructor　(
         assertThatUserCreatedUpdated(true)
     }
 
-    private fun assertThatUserCreatedUpdated(isCreated: Boolean, statusCodeAssertion: StatusResultMatchersDsl)
+    private fun assertThatUserCreatedUpdated(isCreated: Boolean, statusCodeAssertion: StatusResultMatchersDsl.() -> Unit){
+        val isbn = "978-089-230342-0777"
+        val author = testAuthorEntityA(id=1)
+        val savedBook = testBookEntityA(isbn, author)
+    }
 
     @Test
     fun `test that createFullUpdateBook returns HTTP 500 when author in the database does not have an ID`(){
