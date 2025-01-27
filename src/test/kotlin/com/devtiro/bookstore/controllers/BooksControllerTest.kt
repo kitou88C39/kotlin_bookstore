@@ -51,20 +51,10 @@ class BooksControllerTest @Autowired constructor　(
         assertThatUserCreatedUpdated(true)
     }
 
-    private fun assertThatUserCreatedUpdated(isCreated: Boolean, statusCodeAssertion: StatusResultMatchersDsl.() -> Unit){
-        val isbn = "978-089-230342-0777"
-        val author = testAuthorEntityA(id=1)
-        val savedBook = testBookEntityA(isbn, author)
-        bookService.createUpdate(isbn, any())
-        
-    } answers {
-            Pair(savedBook, isCreated)
-        }
-    }
 
     @Test
     fun `test that createFullUpdateBook returns HTTP 500 when author in the database does not have an ID`(){
         
         @Test
-        fun `test that createFullUpdateBook returns HTTP 500 when author in the database does not have an ID`(){   
+        fun `test that createFullUpdateBook returns HTTP 400 when author does not exist`(){   
 }
