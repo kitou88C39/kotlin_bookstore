@@ -7,7 +7,10 @@ import com.ninjasquad.springmockk.MockBean
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.AutoConfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.web.servlet.put
 import org.springframework.test.web.servlet.MockMvc
+import org.springframework.test.web.servlet.result.StatusResultMatchersDsl
+
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -92,7 +95,7 @@ class BooksControllerTest @Autowired constructor　(
             accept = MediaType.APPLICATION_JSON
             content = objectMapper.writeValueAsString(bookSummaryDto)
         }.andExpect {
-            status { isInternalServerError()}
+            status { isBadRequest()}
         }
-}
     }
+}
