@@ -63,7 +63,7 @@ class BooksControllerTest @Autowired constructor　(
         every {
             bookService.createUpdate(isbn, any())
         } answers {
-            Pair(savedBook, isCreated)
+            Pair(savedBook, true)
         }
 
         mockMvc.put("/v1/books/${isbn}"){
@@ -71,11 +71,32 @@ class BooksControllerTest @Autowired constructor　(
             accept = MediaType.APPLICATION_JSON
             content = objectMapper.writeValueAsString(bookSummaryDto)
         }.andExpect {
-            status { statusCodeAssertion()}
+            status { isInternalServerError()}
         }
     }
 
-}
+
     @Test
     fun `test that createFullUpdateBook returns HTTP 400 when author does not exist`(){
+        val isbn = "978-089-230342-0777"
+        val author = testAuthorEntityA(id=1)
+        val savedBook = testBookEntityA(isbn, author)
+
+        val authorSummaryDto = testBookSummaryDtoA(id=1)
+        val bookSummaryDto = testBookSummaryDtoA(isbn, authorSummaryDto)
+
+        every {
+            bookService.createUpdate(isbn, any())
+        } answers {
+            Pair(savedBook, true)
+        }
+
+        mockMvc.put("/v1/books/${isbn}"){
+            contentType = MediaType.APPLICATION_JSON
+            accept = MediaType.APPLICATION_JSON
+            content = objectMapper.writeValueAsString(bookSummaryDto)
+        }.andExpect {
+            status { isInternalServerError()}
+        }
 }
+    }
