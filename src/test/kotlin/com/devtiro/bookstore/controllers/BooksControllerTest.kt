@@ -59,6 +59,22 @@ class BooksControllerTest @Autowired constructor　(
 
         val authorSummaryDto = testBookSummaryDtoA(id=1)
         val bookSummaryDto = testBookSummaryDtoA(isbn, authorSummaryDto)
+
+        every {
+            bookService.createUpdate(isbn, any())
+        } answers {
+            Pair(savedBook, isCreated)
+        }
+
+        mockMvc.put("/v1/books/${isbn}"){
+            contentType = MediaType.APPLICATION_JSON
+            accept = MediaType.APPLICATION_JSON
+            content = objectMapper.writeValueAsString(bookSummaryDto)
+        }.andExpect {
+            status { statusCodeAssertion()}
+        }
+    }
+
 }
     @Test
     fun `test that createFullUpdateBook returns HTTP 400 when author does not exist`(){
