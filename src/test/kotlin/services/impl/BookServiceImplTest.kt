@@ -5,4 +5,11 @@ import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
 @Transactional
-class BookServiceImplTest {}
+class BookServiceImplTest @Autowired constructor(
+
+    private val underTest: AuthorServiceImpl,
+    private val bookRepository: BookRepository,
+    private val authorRepository: authorRepository
+
+){
+}
