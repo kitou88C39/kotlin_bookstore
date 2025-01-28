@@ -13,6 +13,10 @@ class BookServiceImplTest @Autowired constructor(
     private val underTest: AuthorServiceImpl,
     private val bookRepository: BookRepository,
     private val authorRepository: AuthorRepository
-
 ){
+
+    @Test
+    fun `test that createUpdate throws IllegalArgumentException when Author does not exist`(){
+
+    }
 }
