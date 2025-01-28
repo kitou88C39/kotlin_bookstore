@@ -29,7 +29,9 @@ fun testAuthorEntityA(id: Long? = null) = AuthorEntity(
 fun testAuthorEntityB(id: Long? = null) = AuthorEntity(
     id = null,
     name = "John Doe",
-    image = "author-image.jpeg",
+    age = 65,
+    description = "some other description"
+    image = "some-other-image.jpeg",
 )
 
 fun testAuthorSummaryDtoA(id: Long) = AuthorSummaryDto(
