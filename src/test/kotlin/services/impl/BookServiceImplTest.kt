@@ -23,6 +23,6 @@ class BookServiceImplTest @Autowired constructor(
 
     @Test
     fun `test that createUpdate throws IllegalArgumentException when Author does not exist`(){
-
+        underTest.createUpdate()
     }
 }

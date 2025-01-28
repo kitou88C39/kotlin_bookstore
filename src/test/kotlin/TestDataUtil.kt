@@ -71,3 +71,11 @@ fun testBookSummaryDtoA(isbn: String, author: AuthorSummaryDto) = BookSummaryDto
     image = "book-image.jpeg",
     author = author
 )
+
+fun testBookSummaryDtoA(isbn: String, author: AuthorSummaryDto) = BookSummaryDto(
+    isbn = isbn,
+    title = "Test Book A",
+    description = "A test book"
+    image = "book-image.jpeg",
+    author = author
+)
