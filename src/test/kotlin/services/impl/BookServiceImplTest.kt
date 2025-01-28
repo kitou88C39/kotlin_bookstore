@@ -36,11 +36,12 @@ class BookServiceImplTest @Autowired constructor(
 
         val authorSummary = AuthorSummary(id=savedAuthor!!)
         val bookRepository = testBookSummaryA(BOOK_A_ISBN, authorSummary)
-        val savedBook = underTest.createUpdate(BOOK_A_ISBN, bookRepository)
+        val (savedBook, isCreated) = underTest.createUpdate(BOOK_A_ISBN, bookRepository)
         assertThat(savedBook).isNotNull()
 
         val recalledBook = bookRepository.findByIdOrNull(BOOK_A_ISBN)
         assertThat(recalledBook).isNotNull()
         assertThat(recalledBook).isEqualTo(savedBook)
+        assertThat(isCreated).isTrue()
     }
 }
