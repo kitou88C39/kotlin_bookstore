@@ -3,7 +3,10 @@ package com.devtiro.bookstore
 import com.devtiro.bookstore.domain.AuthorUpdateRequest
 import com.devtiro.bookstore.domain.dto.AuthorDto
 import com.devtiro.bookstore.domain.dto.AuthorSummaryDto
+import com.devtiro.bookstore.domain.dto.AuthorUpdateRequestDto
+import com.devtiro.bookstore.domain.dto.BookSummaryDto
 import com.devtiro.bookstore.domain.entities.AuthorEntity
+import com.devtiro.bookstore.domain.entities.BookEntity
 
 fun testAuthorDtoA(id: Long? = null) = AuthorDto(
     id = id,
