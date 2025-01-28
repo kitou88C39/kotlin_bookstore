@@ -3,7 +3,6 @@ package com.devtiro.bookstore.services.impl
 import com.devtiro.bookstore.repositories.AuthorRepository
 import com.devtiro.bookstore.repositories.BookRepository
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.transaction.annotation.Transactional
 import org.junit.jupiter.api.assertThrows
 import java.lang.IllegalArgumentException
@@ -25,6 +24,7 @@ class BookServiceImplTest @Autowired constructor(
     fun `test that createUpdate throws IllegalArgumentException when Author does not exist`(){
         val authorSummary = AuthorSummary(id=999L)
         val bookRepository = testBookSummaryA(BOOK_A_ISBN, authorSummary)
+        assertThrows<IllegalArgumentException> {
         underTest.createUpdate(BOOK_A_ISBN, bookRepository)
     }
 }
