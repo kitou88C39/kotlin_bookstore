@@ -21,10 +21,19 @@ class BookServiceImplTest @Autowired constructor(
 ){
 
     @Test
-    fun `test that createUpdate throws IllegalArgumentException when Author does not exist`(){
+    fun `test that createUpdate throws IllegalStateException when Author does not exist`(){
         val authorSummary = AuthorSummary(id=999L)
         val bookRepository = testBookSummaryA(BOOK_A_ISBN, authorSummary)
-        assertThrows<IllegalArgumentException> {
-        underTest.createUpdate(BOOK_A_ISBN, bookRepository)
+        assertThrows<IllegalStateException> {
+            underTest.createUpdate(BOOK_A_ISBN, bookRepository)
     }
+    }
+
+    @Test
+    fun `test that createUpdate throws IllegalStateException when Author does not exist`(){
+        val authorSummary = AuthorSummary(id=999L)
+        val bookRepository = testBookSummaryA(BOOK_A_ISBN, authorSummary)
+        assertThrows<IllegalStateException> {
+            underTest.createUpdate(BOOK_A_ISBN, bookRepository)
+    
 }
