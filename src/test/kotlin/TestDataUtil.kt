@@ -72,7 +72,7 @@ fun testBookSummaryDtoA(isbn: String, author: AuthorSummaryDto) = BookSummaryDto
     author = author
 )
 
-fun testBookSummaryDtoA(isbn: String, author: AuthorSummaryDto) = BookSummaryDto(
+fun testBookSummary(isbn: String, author: AuthorSummary) = BookSummary(
     isbn = isbn,
     title = "Test Book A",
     description = "A test book"
