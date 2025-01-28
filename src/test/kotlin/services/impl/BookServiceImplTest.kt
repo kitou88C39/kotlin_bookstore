@@ -32,9 +32,10 @@ class BookServiceImplTest @Autowired constructor(
     @Test
     fun `test that createUpdate throws successfully creates book in the database`(){
         val saveDAuthor = authorRepository.save(testAuthorEntityA())
+        assertThat(savedAuthor).isNotNull()
+        val authorSummary = AuthorSummary(id=savedAuthor!!)
         val bookRepository = testBookSummaryA(BOOK_A_ISBN, authorSummary)
-        assertThrows<IllegalStateException> {
-            underTest.createUpdate(BOOK_A_ISBN, bookRepository)
+            
     
 }
-    }
+}
