@@ -40,7 +40,7 @@ fun testAuthorSummaryDtoA(id: Long) = AuthorSummaryDto(
     image = "author-image.jpeg",
 )
 
-fun testAuthorSummary(id: Long) = AuthorSummary(
+fun testAuthorSummaryA(id: Long) = AuthorSummary(
     id = id,
     name = "John Doe",
     image = "author-image.jpeg",
