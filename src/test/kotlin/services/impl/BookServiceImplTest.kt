@@ -46,13 +46,16 @@ class BookServiceImplTest @Autowired constructor(
     }
 
     @Test
-    fun `test that createUpdate throws successfully creates book in the database`(){
+    fun `test that createUpdate throws successfully update book in the database`(){
         val saveDAuthor = authorRepository.save(testAuthorEntityA())
+        assertThat(savedAuthor).isNotNull()
+
+        val savedBook = bookRepository.save(testAuthorEntityA(BOOK_A_ISBN, saveAuthor))
         assertThat(savedAuthor).isNotNull()
 
         val authorSummary = AuthorSummary(id=savedAuthor!!)
         val bookRepository = testBookSummaryA(BOOK_A_ISBN, authorSummary)
-        val (savedBook, isCreated) = underTest.createUpdate(BOOK_A_ISBN, bookRepository)
+        val (ipdateBook, isCreated) = underTest.createUpdate(BOOK_A_ISBN, bookRepository)
         assertThat(savedBook).isNotNull()
 
         val recalledBook = bookRepository.findByIdOrNull(BOOK_A_ISBN)
