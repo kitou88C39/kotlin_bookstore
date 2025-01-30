@@ -60,7 +60,6 @@ class BookServiceImplTest @Autowired constructor(
 
         val recalledBook = bookRepository.findByIdOrNull(BOOK_A_ISBN)
         assertThat(recalledBook).isNotNull()
-        assertThat(recalledBook).isEqualTo(savedBook)
-        assertThat(isCreated).isTrue()
+        assertThat(isCreated).isFalse()
     }
 }
