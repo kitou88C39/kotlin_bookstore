@@ -1,8 +1,8 @@
 package com.devtiro.bookstore.controllers
 
 import com.devtiro.bookstore.services.BookService
-import com.devtiro.bookstore.domain.dto.BookSummary
-import com.devtiro.bookstore.domain.dto.BookSummaryDto
+import com.devtiro.bookstore.domain.dto.toBookSummary
+import com.devtiro.bookstore.domain.dto.toBookSummaryDto
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annoatation.*
@@ -20,7 +20,10 @@ class BooksController(val BookService: BookService) {
       } catch(ex: IllegalStateException){
           return ResponseEntity(HttpStatus.INTENAL_SERVER_ERROR)
       } catch(ex: IllegalStateException){
-        return ResponseEntity(HttpStatus.BAD_REQUEST)
+          return ResponseEntity(HttpStatus.BAD_REQUEST)
     }
   }
+
+  @GetMapping(ath = ["/v1/books"])
+  fun readManyBooks(): List<BookSummaryDto> {}
 }
