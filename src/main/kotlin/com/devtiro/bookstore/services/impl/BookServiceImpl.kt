@@ -26,4 +26,7 @@ class BookServiceImpl(
         return Pair(saveBook, !isExists)
     }
 
+    override fun list(): List<BookEntity> {
+        return bookRepository.findAll()
+    }
 }
