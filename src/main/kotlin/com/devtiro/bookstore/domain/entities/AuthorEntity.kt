@@ -24,4 +24,9 @@ data class Author (
     val description: String,
 
     @Column(name="image")
-    val image: String)
+    val image: String,
+
+    @ManyToOne(cascade = [CascadeType.DETACH])
+    @JoinColumn(name="author_id")
+    val authorEntity: AuthorEntity
+)
