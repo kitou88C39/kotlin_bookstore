@@ -26,7 +26,5 @@ data class Author (
     @Column(name="image")
     val image: String,
 
-    @ManyToOne(cascade = [CascadeType.DETACH])
-    @JoinColumn(name="author_id")
-    val authorEntity: AuthorEntity
+    val BookEntities: List<BookEntity> = emptyList(),
 )
