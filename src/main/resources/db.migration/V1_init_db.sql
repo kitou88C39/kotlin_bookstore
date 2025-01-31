@@ -1,5 +1,5 @@
-DROP SEQUENCE IF EXISTS "author_id seq";
-CREATE SEQUENCE "author_id seq" INCREMENT BY 50 START WITH 1;
+DROP SEQUENCE IF EXISTS "authors";
+CREATE SEQUENCE "authors" INCREMENT BY 50 START WITH 1;
 
 DROP SEQUENCE IF EXISTS "authors";
 CREATE TABLE "authors" (
@@ -17,6 +17,6 @@ CREATE TABLE "books" (
     "description" VARCHAR(2048),
     "image" VARCHAR(512),
     "title" VARCHAR(512),
-    "author_id" bigint,
+    "author_id" bigint NOT NULL REFERENCES ,
     CONSTRAINT "books_pkey" PRIMARY KEY("isbn")
 );
