@@ -17,6 +17,6 @@ CREATE TABLE "books" (
     "description" VARCHAR(2048),
     "image" VARCHAR(512),
     "title" VARCHAR(512),
-    "author_id" bigint NOT NULL REFERENCES ,
+    "author_id" bigint NOT NULL REFERENCES "author" ("id"),
     CONSTRAINT "books_pkey" PRIMARY KEY("isbn")
 );
