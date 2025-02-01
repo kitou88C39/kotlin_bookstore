@@ -130,10 +130,18 @@ class BooksControllerTest @Autowired constructor(
 
     @Test
     fun `test that list returns no books when they do not match the author ID`(){
-        
         every {
             bookService.list(authorId = any())
         } answers {
             emptyList()
         }
+
+        mockMvc.get("/v1/books?author=999") {
+            contentType = MediaType.APPLICATION_JSON
+            accept = MediaType.APPLICATION_JSON
+        }.andExpect {
+            status { isOk()}
+            content { jsonPath ("[]")}
+        }
+    }
 }
