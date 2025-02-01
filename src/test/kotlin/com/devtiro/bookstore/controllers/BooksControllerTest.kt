@@ -79,7 +79,6 @@ class BooksControllerTest @Autowired constructor　(
         }
     }
 
-
     @Test
     fun `test that createFullUpdateBook returns HTTP 400 when author does not exist`(){
         val isbn = "978-089-230342-0777"
