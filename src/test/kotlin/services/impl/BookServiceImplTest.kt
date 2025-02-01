@@ -64,8 +64,8 @@ class BookServiceImplTest @Autowired constructor(
     }
 
     @Test
-    fun `test that createUpdate throws successfully update book in the database`(){
-        val saveDAuthor = authorRepository.save(testAuthorEntityA())
-        assertThat(savedAuthor).isNotNull()
+    fun `test that list returns an empty list when no book in the database`(){
+        val result = underTest.list()
+        assertThat(result).isNotEmpty()
     }
 }
