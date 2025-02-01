@@ -91,6 +91,7 @@ class BookServiceImplTest @Autowired constructor(
         val savedBook = bookRepository.save(testAuthorEntityA(BOOK_A_ISBN, savedAuthor))
         assertThat(savedBook).isNotNull()
 
-        underTest.list(authorId = savedAuthor.id!! + 1)
+        val result = underTest.list(authorId = savedAuthor.id!! + 1)
+        assertThat(result).hasSize(0)
     }
 }
