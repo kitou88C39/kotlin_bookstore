@@ -62,4 +62,10 @@ class BookServiceImplTest @Autowired constructor(
         assertThat(recalledBook).isNotNull()
         assertThat(isCreated).isFalse()
     }
+
+    @Test
+    fun `test that createUpdate throws successfully update book in the database`(){
+        val saveDAuthor = authorRepository.save(testAuthorEntityA())
+        assertThat(savedAuthor).isNotNull()
+    }
 }
