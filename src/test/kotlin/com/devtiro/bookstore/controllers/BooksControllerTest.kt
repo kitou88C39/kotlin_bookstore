@@ -156,5 +156,12 @@ class BooksControllerTest @Autowired constructor(
                 )
             )
         }
-
+        mockMvc.get("/v1/books?author=999") {
+            contentType = MediaType.APPLICATION_JSON
+            accept = MediaType.APPLICATION_JSON
+        }.andExpect {
+            status { isOk()}
+            content { jsonPath ("[]")}
+        }
+    }
 }
