@@ -161,8 +161,7 @@ class BooksControllerTest @Autowired constructor(
             contentType = MediaType.APPLICATION_JSON
             accept = MediaType.APPLICATION_JSON
         }.andExpect {
-            status { isBadRequest()}
-            content { jsonPath ("[]")}
+            status { isOk()}
             content { jsonPath ( "$[0].isbn", equalTo(isbn))}
             content { jsonPath ( "$[0].title", equalTo(isbn))}
             content { jsonPath ( "$[0].image", equalTo("book-image.jpeg"))}
