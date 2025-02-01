@@ -27,6 +27,9 @@ class BookServiceImpl(
     }
 
     override fun list(): List<BookEntity> {
+        authorId?.let {
+            
+        }
         return bookRepository.findAll()
     }
 }
