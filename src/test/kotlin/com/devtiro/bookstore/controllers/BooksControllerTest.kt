@@ -1,9 +1,9 @@
 package com.devtiro.bookstore.controllers
 
-import com.devtiro.bookstore.services.AuthorService
-import com.devtiro.bookstore.services.BookService
-
-
+import com.devtiro.bookstore.testAuthorEntityA
+import com.devtiro.bookstore.testAuthorSummaryDtoA
+import com.devtiro.bookstore.testBookEntityA
+import com.devtiro.bookstore.testBookSummaryDtoA
 import com.festerxml.jackson.databind.ObjectMapper
 import com.ninjasquad.springmockk.MockBean
 import org.hamcrest.CoreMatchers.equalTo
@@ -20,7 +20,7 @@ import org.springframework.test.web.servlet.result.StatusResultMatchersDsl
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class BooksControllerTest @Autowired constructor　(
+class BooksControllerTest @Autowired constructor(
     private val mockMvc: MockMvc,
     @MockkBean val authorService: AuthorService
     ) {
