@@ -25,7 +25,7 @@ class BooksController(val BookService: BookService) {
     }
 
    @GetMapping(path = ["/v1/books"])
-   fun readManyBooks(): List<BookSummaryDto> {
-      return BookService.list().map { it.toBookSummaryDto()}
+   fun readManyBooks(@RequestPram("author")authorId: Long?): List<BookSummaryDto> {
+      return BookService.list(authorId:).map { it.toBookSummaryDto()}
     }
 }
