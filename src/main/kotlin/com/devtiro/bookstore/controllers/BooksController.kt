@@ -17,15 +17,15 @@ class BooksController(val BookService: BookService) {
           val responseCode = if(isCreated) HttpStatus.CREATED else HttpStatus.OK
           return ResponseEntity(saveBook.toBookSummaryDto(), responseCode)
 
-      } catch(ex: IllegalStateException){
+        } catch(ex: IllegalStateException){
           return ResponseEntity(HttpStatus.INTENAL_SERVER_ERROR)
-      } catch(ex: IllegalStateException){
+        } catch(ex: IllegalStateException){
           return ResponseEntity(HttpStatus.BAD_REQUEST)
+        }
     }
-  }
 
-  @GetMapping(path = ["/v1/books"])
-  fun readManyBooks(): List<BookSummaryDto> {
+   @GetMapping(path = ["/v1/books"])
+   fun readManyBooks(): List<BookSummaryDto> {
       return BookService.list().map { it.toBookSummaryDto()}
   }
 }
