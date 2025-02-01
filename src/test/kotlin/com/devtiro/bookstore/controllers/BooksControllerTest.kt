@@ -147,9 +147,14 @@ class BooksControllerTest @Autowired constructor(
     @Test
     fun `test that list returns books when matches the author ID`(){
         every {
-            bookService.list(authorId = any())
+            bookService.list(authorId = 1L)
         } answers {
-            emptyList()
+            ListOf(
+                testBookEntityA(
+                    isbn=isbn,
+                    testAuthorEntityA(1L)
+                )
+            )
         }
 
 }
