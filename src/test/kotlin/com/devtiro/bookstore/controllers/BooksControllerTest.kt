@@ -156,12 +156,19 @@ class BooksControllerTest @Autowired constructor(
                 )
             )
         }
-        mockMvc.get("/v1/books?author=999") {
+
+        mockMvc.get("/v1/books?author=1") {
             contentType = MediaType.APPLICATION_JSON
             accept = MediaType.APPLICATION_JSON
         }.andExpect {
-            status { isOk()}
+            status { isBadRequest()}
             content { jsonPath ("[]")}
+            content { jsonPath ( "$[0].isbn", equalTo(isbn))}
+            content { jsonPath ( "$[0].title", equalTo(isbn))}
+            content { jsonPath ( "$[0].image", equalTo("book-image.jpeg"))}
+            content { jsonPath ( "$[0].author.id", equalTo(1))}
+            content { jsonPath ( "$[0].author.name", equalTo("John Doe"))}
+            content { jsonPath ( "$[0].author.image", equalTo("author-image.jpeg"))}
         }
     }
 }
