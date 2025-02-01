@@ -66,6 +66,12 @@ class BookServiceImplTest @Autowired constructor(
     @Test
     fun `test that list returns an empty list when no book in the database`(){
         val result = underTest.list()
-        assertThat(result).isNotEmpty()
+        assertThat(result).isEmpty()
+    }
+
+    @Test
+    fun `test that list returns an empty list when no book in the database`(){
+        val result = underTest.list()
+        assertThat(result).isEmpty()
     }
 }
