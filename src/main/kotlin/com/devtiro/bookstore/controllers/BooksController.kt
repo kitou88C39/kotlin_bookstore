@@ -13,19 +13,19 @@ class BooksController(val BookService: BookService) {
     @PutMapping(path = ["/v1/books/{isbn}"])
     fun createFullUpdateBook(@PathVariable("isbn")isbn: String, @RequestBody book: BookSummaryDto): responseEntity<BookSummaryDto>{
         try {
-          val (savedBook, siCreated) = BookService.createUpdate(isbn, book.toBookSummary())
-          val responseCode = if(isCreated) HttpStatus.CREATED else HttpStatus.OK
-          return ResponseEntity(saveBook.toBookSummaryDto(), responseCode)
+            val (savedBook, siCreated) = BookService.createUpdate(isbn, book.toBookSummary())
+            val responseCode = if(isCreated) HttpStatus.CREATED else HttpStatus.OK
+            return ResponseEntity(saveBook.toBookSummaryDto(), responseCode)
 
         } catch(ex: IllegalStateException){
-          return ResponseEntity(HttpStatus.INTENAL_SERVER_ERROR)
+            return ResponseEntity(HttpStatus.INTENAL_SERVER_ERROR)
         } catch(ex: IllegalStateException){
-          return ResponseEntity(HttpStatus.BAD_REQUEST)
+            return ResponseEntity(HttpStatus.BAD_REQUEST)
         }
     }
 
    @GetMapping(path = ["/v1/books"])
    fun readManyBooks(@RequestPram("author")authorId: Long?): List<BookSummaryDto> {
-      return BookService.list(authorId:).map { it.toBookSummaryDto()}
+        return BookService.list(authorId:).map { it.toBookSummaryDto()}
     }
 }
