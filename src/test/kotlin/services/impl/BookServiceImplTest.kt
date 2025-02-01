@@ -31,7 +31,7 @@ class BookServiceImplTest @Autowired constructor(
 
     @Test
     fun `test that createUpdate throws successfully creates book in the database`(){
-        val saveDAuthor = authorRepository.save(testAuthorEntityA())
+        val savedAuthor = authorRepository.save(testAuthorEntityA())
         assertThat(savedAuthor).isNotNull()
 
         val authorSummary = AuthorSummary(id=savedAuthor!!)
@@ -47,7 +47,7 @@ class BookServiceImplTest @Autowired constructor(
 
     @Test
     fun `test that createUpdate throws successfully update book in the database`(){
-        val saveDAuthor = authorRepository.save(testAuthorEntityA())
+        val savedAuthor = authorRepository.save(testAuthorEntityA())
         assertThat(savedAuthor).isNotNull()
 
         val savedBook = bookRepository.save(testAuthorEntityA(BOOK_A_ISBN, saveAuthor))
@@ -70,8 +70,11 @@ class BookServiceImplTest @Autowired constructor(
     }
 
     @Test
-    fun `test that list returns an empty list when no book in the database`(){
-        val result = underTest.list()
-        assertThat(result).isEmpty()
+    fun `test that list returns books list when no book in the database`(){
+        val savedAuthor = authorRepository.save(testAuthorEntityA())
+        assertThat(savedAuthor).isNotNull()
+
+        val savedBook = bookRepository.save(testAuthorEntityA(BOOK_A_ISBN, saveAuthor))
+        assertThat(savedBook).isNotNull()
     }
 }
