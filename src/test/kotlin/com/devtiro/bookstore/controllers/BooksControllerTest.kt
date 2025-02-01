@@ -127,4 +127,14 @@ class BooksControllerTest @Autowired constructor(
             content { jsonPath ( "$[0].author.image", equalTo("author-image.jpeg"))}
         }
     }
+
+    @Test
+    fun `test that readManyBooks returns a list of books`(){
+        val isbn = "978-089-230342-0777"
+        
+        every {
+            bookService.list()
+        } answers {
+            listOf(testAuthorEntityA(isbn = isbn, testAuthorEntityA(id=1)))
+        }
 }
