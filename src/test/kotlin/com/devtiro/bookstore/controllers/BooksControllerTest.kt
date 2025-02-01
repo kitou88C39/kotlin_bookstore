@@ -114,7 +114,8 @@ class BooksControllerTest @Autowired constructor　(
             contentType = MediaType.APPLICATION_JSON
             accept = MediaType.APPLICATION_JSON
         }.andExpect {
-            status { isBadRequest()}
+            status { isOk()}
+            content { jsonPath ( "$.id", equalTo(999))}
         }
     }
 }
