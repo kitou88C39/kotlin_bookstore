@@ -129,12 +129,11 @@ class BooksControllerTest @Autowired constructor(
     }
 
     @Test
-    fun `test that readManyBooks returns a list of books`(){
-        val isbn = "978-089-230342-0777"
+    fun `test that list returns no books when they do not match the author ID`(){
         
         every {
-            bookService.list()
+            bookService.list(authorId = any())
         } answers {
-            listOf(testAuthorEntityA(isbn = isbn, testAuthorEntityA(id=1)))
+            emptyList()
         }
 }
