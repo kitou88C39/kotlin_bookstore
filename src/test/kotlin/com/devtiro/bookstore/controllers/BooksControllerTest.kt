@@ -110,10 +110,9 @@ class BooksControllerTest @Autowired constructor　(
             listOf(testAuthorEntityA(isbn = isbn, testAuthorEntityA(id=1)))
         }
         
-        mockMvc.put("/v1/books/${isbn}"){
+        mockMvc.get("/v1/books"){
             contentType = MediaType.APPLICATION_JSON
             accept = MediaType.APPLICATION_JSON
-            content = objectMapper.writeValueAsString(bookSummaryDto)
         }.andExpect {
             status { isBadRequest()}
         }
