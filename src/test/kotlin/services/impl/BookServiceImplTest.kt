@@ -94,4 +94,16 @@ class BookServiceImplTest @Autowired constructor(
         val result = underTest.list(authorId = savedAuthor.id!! + 1)
         assertThat(result).hasSize(0)
     }
+
+    @Test
+    fun `test that list returns no books when the author ID does not match`(){
+        val savedAuthor = authorRepository.save(testAuthorEntityA())
+        assertThat(savedAuthor).isNotNull()
+
+        val savedBook = bookRepository.save(testAuthorEntityA(BOOK_A_ISBN, savedAuthor))
+        assertThat(savedBook).isNotNull()
+
+        val result = underTest.list(authorId = savedAuthor.id!! + 1)
+        assertThat(result).hasSize(0)
+    }
 }
