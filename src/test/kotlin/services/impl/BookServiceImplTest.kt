@@ -25,7 +25,8 @@ class BookServiceImplTest @Autowired constructor(
         val authorSummary = AuthorSummary(id=999L)
         val bookRepository = testBookSummaryA(BOOK_A_ISBN, authorSummary)
         assertThrows<IllegalStateException> {
-            underTest.createUpdate(BOOK_A_ISBN, bookRepository)
+        
+        underTest.createUpdate(BOOK_A_ISBN, bookRepository)
         }
     }
 
@@ -89,5 +90,7 @@ class BookServiceImplTest @Autowired constructor(
 
         val savedBook = bookRepository.save(testAuthorEntityA(BOOK_A_ISBN, savedAuthor))
         assertThat(savedBook).isNotNull()
+
+        underTest.list(authorId = savedAuthor.id)
     }
 }
