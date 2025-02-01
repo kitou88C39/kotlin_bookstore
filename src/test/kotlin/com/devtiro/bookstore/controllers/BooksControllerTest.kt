@@ -117,6 +117,9 @@ class BooksControllerTest @Autowired constructor　(
             status { isOk()}
             content { jsonPath ( "$[0].isbn", equalTo(isbn))}
             content { jsonPath ( "$[0].title", equalTo(isbn))}
+            content { jsonPath ( "$[0].image", equalTo("book-image.jpeg"))}
+            content { jsonPath ( "$[0].author.id", equalTo(1))}
+            content { jsonPath ( "$[0].author.id", equalTo(1))}
         }
     }
 }
