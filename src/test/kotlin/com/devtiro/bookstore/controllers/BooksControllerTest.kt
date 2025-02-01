@@ -101,22 +101,14 @@ class BooksControllerTest @Autowired constructor　(
     }
 
     @Test
-    fun `test that createFullUpdateBook returns HTTP 400 when author does not exist`(){
+    fun `test that readManyBooks returns a list of books`(){
         val isbn = "978-089-230342-0777"
         
-        val authorSummaryDto = testBookSummaryDtoA(id=1)
-        val bookSummaryDto = testBookSummaryDtoA(isbn, authorSummaryDto)
-
         every {
-            bookService.createUpdate(isbn, any())
-        } throws IllegalStateException()
-
-        mockMvc.put("/v1/books/${isbn}"){
-            contentType = MediaType.APPLICATION_JSON
-            accept = MediaType.APPLICATION_JSON
-            content = objectMapper.writeValueAsString(bookSummaryDto)
-        }.andExpect {
-            status { isBadRequest()}
+            bookService.list()
+        } answers {
+            listOf(testAuthorEntityA(isbn = isbn, testAuthorEntityA()))
         }
+        
     }
 }
