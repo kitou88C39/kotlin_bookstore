@@ -134,7 +134,6 @@ class BookServiceImplTest @Autowired constructor(
         assertThat(savedBook).isNotNull()
 
         val result = underTest.get(savedAuthor.isbn)
-        assertThat(result).isNull()
         assertThat(result).isEqualTo(savedBook)
     }
 }
