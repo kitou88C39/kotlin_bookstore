@@ -1,19 +1,9 @@
 package com.devtiro.bookstore.services.impl
 
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.transaction.annotation.Transactional
-import org.springframework.beans.factory.annotation.Autowired
-import org.assertj.core.api.Assertions.assertThat
-import org.springframework.data.repository.findByIdOrNull
 
-import com.example.repository.BookRepository
-import com.example.repository.AuthorRepository
-import com.example.service.AuthorServiceImpl
-import com.example.model.AuthorSummary
-import com.example.model.testAuthorEntityA
-import com.example.model.testBookSummaryA
+import com.devtiro.bookstore.domain.dto.bookSummaryDto
+import com.devtiro.bookstore.domain.entities.AuthorEntity
+import com.devtiro.bookstore.domain.entities.BookEntity
 
 @SpringBootTest
 @Transactional
@@ -127,6 +117,6 @@ class BookServiceImplTest @Autowired constructor(
 
     @Test
     fun `test that get returns null when book not found in the database`(){
-        
+        underTest.get(BOOK_A_ISBN)
     }
 }
