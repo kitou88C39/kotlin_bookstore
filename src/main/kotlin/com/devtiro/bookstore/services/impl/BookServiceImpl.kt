@@ -40,10 +40,12 @@ class BookServiceImpl(
         val existingBook = bookRepository.findByIdOrNull(isbn)
         checkNotNull(existingBook)
 
-        existingBook.copy(
+        val updatedBook = existingBook.copy(
             title = bookUpdateRequest.title ?: existingBook.title,
             description = bookUpdateRequest.description ?:existingBook.description,
             image = bookUpdateRequest.image ?:existingBook.image,
         )
+
+        return bookRepository.save(updatedBook) 
     }
 }
