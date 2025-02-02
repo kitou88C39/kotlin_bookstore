@@ -36,7 +36,8 @@ class BookServiceImpl(
         return bookRepository.findByIdOrNull(isbn) 
     }
 
-    override fun get(isbn: String): BookEntity {
-        return bookRepository.findByIdOrNull(isbn) 
+    override fun partialUpdate(isbn: String, bookUpdateRequest: BookUpdateRequest): BookEntity {
+        val existingBook = bookRepository.findByIdOrNull(isbn)
+        checkNotNull(existingBook)
     }
 }
