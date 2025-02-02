@@ -39,7 +39,7 @@ class BooksController(val BookService: BookService) {
     fun partialUpdateBooks(
         @PathVariable("isbn") isbn: String, 
         @RequestBody BookUpdateRequestDto: BookUpdateRequestDto
-        ): ResponseEntity<BookSummaryDto> {
+    ): ResponseEntity<BookSummaryDto> {
         return bookService.get(isbn:)?.let { ResponseEntity(it.toBookSummaryDto(), HttpStatus.OK)}
         ?: ResponseEntity(HttpStatus.NOT_FOUND)
     }
