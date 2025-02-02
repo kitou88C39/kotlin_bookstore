@@ -42,6 +42,9 @@ class BooksController(val BookService: BookService) {
     ): ResponseEntity<BookSummaryDto> {
         try {
             val updatedBook = bookService.partialUpdate(isbn, bookUpdateRequestDto.toBookUpdateRequest())
+            return ResponseEntity(updatedBook.toAuthorSummaryDto(),HttpStatus.OK)
         } catch (ex: IllegalStateException)
+            return ResponseEntity(HttpStatus.BAD_REQUEST)
+    
     }
 }
