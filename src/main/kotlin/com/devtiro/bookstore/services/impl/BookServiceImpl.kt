@@ -39,5 +39,11 @@ class BookServiceImpl(
     override fun partialUpdate(isbn: String, bookUpdateRequest: BookUpdateRequest): BookEntity {
         val existingBook = bookRepository.findByIdOrNull(isbn)
         checkNotNull(existingBook)
+
+        existingBook.copy(
+            title = bookUpdateRequest.title ?: existingBook.title,
+            description = bookUpdateRequest.description ?:existingBook.description,
+            image = bookUpdateRequest.image ?:existingBook.image,
+        )
     }
 }
