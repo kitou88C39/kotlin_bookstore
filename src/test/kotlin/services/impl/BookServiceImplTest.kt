@@ -104,7 +104,7 @@ class BookServiceImplTest @Autowired constructor(
         assertThat(savedBook).isNotNull()
 
         val result = underTest.list(authorId = savedAuthor.id)
-        assertThat(result).hasSize(0)
+        assertThat(result).hasSize(1)
         assertThat(result[0]).isEqualTo(savedBook)
     }
 }

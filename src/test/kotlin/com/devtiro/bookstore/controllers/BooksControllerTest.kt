@@ -170,4 +170,17 @@ class BooksControllerTest @Autowired constructor(
             content { jsonPath ( "$[0].author.image", equalTo("author-image.jpeg"))}
         }
     }
+
+    @Test
+    fun `test that list returns books when matches the author ID`(){
+        every {
+            bookService.list(authorId = 1L)
+        } answers {
+            ListOf(
+                testBookEntityA(
+                    isbn=isbn,
+                    testAuthorEntityA(1L)
+                )
+            )
+        }
 }
