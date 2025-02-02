@@ -132,5 +132,9 @@ class BookServiceImplTest @Autowired constructor(
 
         val savedBook = bookRepository.save(testAuthorEntityA(BOOK_A_ISBN, savedAuthor))
         assertThat(savedBook).isNotNull()
+
+        val result = underTest.get(savedAuthor.isbn)
+        assertThat(result).isNull()
+        assertThat(result).isEqualTo(savedBook)
     }
 }
