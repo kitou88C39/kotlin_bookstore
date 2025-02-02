@@ -1,15 +1,19 @@
 package com.devtiro.bookstore.services.impl
 
-import com.devtiro.bookstore.repositories.AuthorRepository
-import com.devtiro.bookstore.repositories.BookRepository
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.transaction.annotation.Transactional
-import org.junit.jupiter.api.assertThrows
-import java.lang.IllegalArgumentException
-import org.springframework.boot.test.context.Transactional
 import org.junit.jupiter.api.Test
-import org.springframework.beans.factory.annoatation.SpringBootTest
+import org.junit.jupiter.api.assertThrows
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.transaction.annotation.Transactional
+import org.springframework.beans.factory.annotation.Autowired
+import org.assertj.core.api.Assertions.assertThat
+import org.springframework.data.repository.findByIdOrNull
+
+import com.example.repository.BookRepository
+import com.example.repository.AuthorRepository
+import com.example.service.AuthorServiceImpl
+import com.example.model.AuthorSummary
+import com.example.model.testAuthorEntityA
+import com.example.model.testBookSummaryA
 
 @SpringBootTest
 @Transactional
@@ -93,6 +97,19 @@ class BookServiceImplTest @Autowired constructor(
 
         val result = underTest.list(authorId = savedAuthor.id!! + 1)
         assertThat(result).hasSize(0)
+    }
+
+    @Test
+    fun `test that list returns books when the author ID does match`(){
+        val savedAuthor = authorRepository.save(testAuthorEntityA())
+        assertThat(savedAuthor).isNotNull()
+
+        val savedBook = bookRepository.save(testAuthorEntityA(BOOK_A_ISBN, savedAuthor))
+        assertThat(savedBook).isNotNull()
+
+        val result = underTest.list(authorId = savedAuthor.id)
+        assertThat(result).hasSize(1)
+        assertThat(result[0]).isEqualTo(savedBook)
     }
 
     @Test
