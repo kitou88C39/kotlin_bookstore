@@ -190,11 +190,12 @@ class BooksControllerTest @Autowired constructor(
 
     @Test
     fun `test that readOneBook returns book  ane HTTP 200 when book found`(){
+        val isbn = "978-089-230342-0777"
 
         every {
-            bookService.get(any())
+            bookService.get(isbn)
         } answers {
-            null
+            testBookEntityA(isbn)
         }
     }
 }
