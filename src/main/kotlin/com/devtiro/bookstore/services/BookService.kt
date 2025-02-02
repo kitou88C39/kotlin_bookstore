@@ -11,5 +11,5 @@ interface BookService {
 
     fun get(isbn: String): BookEntity?
 
-    fun partialUpdate(isbn: String, BookUpdateRequestDto: BookUpdateRequestDto)
+    fun partialUpdate(isbn: String, BookUpdateRequestDto: BookUpdateRequestDto): BookEntity
 }
