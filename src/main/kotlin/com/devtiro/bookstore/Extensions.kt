@@ -68,3 +68,11 @@ fun BookEntity.toBookSummaryDto() = BookSummaryDto(
     image=this.image,
     author=this.authorEntityDto()
 )
+
+fun BookEntity.toBookSummaryDto() = BookSummaryDto(
+    isbn=this.isbn,
+    title=this.title,
+    description=this.description,
+    image=this.image,
+    author=this.authorEntityDto()
+)
