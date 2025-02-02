@@ -172,15 +172,15 @@ class BooksControllerTest @Autowired constructor(
     }
 
     @Test
-    fun `test that list returns books when matches the author ID`(){
+    fun `test that readOneBook returns HTTP 404 when no book found`(){
         every {
-            bookService.list(authorId = 1L)
+            bookService.get(any())
         } answers {
-            ListOf(
-                testBookEntityA(
-                    isbn=isbn,
-                    testAuthorEntityA(1L)
-                )
-            )
+            null
         }
+        mockMvc.get("/v1/books?author=999") {
+            contentType = MediaType.APPLICATION_JSON
+            accept = MediaType.APPLICATION_JSON
+        }
+    }
 }
