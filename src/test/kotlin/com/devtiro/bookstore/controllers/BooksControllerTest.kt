@@ -184,6 +184,11 @@ class BooksControllerTest @Autowired constructor(
             contentType = MediaType.APPLICATION_JSON
             accept = MediaType.APPLICATION_JSON
         }.andExpect {
-            status { isOk()}
+            status { isNotFound()}
+        }
+    }
+
+    @Test
+    fun `test that readOneBook returns HTTP 404 when no book found`(){
     }
 }
