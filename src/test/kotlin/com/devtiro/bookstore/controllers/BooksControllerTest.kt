@@ -173,14 +173,17 @@ class BooksControllerTest @Autowired constructor(
 
     @Test
     fun `test that readOneBook returns HTTP 404 when no book found`(){
+        val isbn = "978-089-230342-0777"
+
         every {
             bookService.get(any())
         } answers {
             null
         }
-        mockMvc.get("/v1/books?author=999") {
+        mockMvc.get("/v1/books/$isbn") {
             contentType = MediaType.APPLICATION_JSON
             accept = MediaType.APPLICATION_JSON
-        }
+        }.andExpect {
+            status { isOk()}
     }
 }
