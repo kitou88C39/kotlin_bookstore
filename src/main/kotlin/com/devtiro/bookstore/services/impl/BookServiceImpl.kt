@@ -32,10 +32,8 @@ class BookServiceImpl(
         } ?: bookRepository.findAll()
     }
 
-    override fun list(): List<BookEntity> {
-        return authorId?.let {
-            bookRepository.findByAuthorEntityId(it)
-        } ?: bookRepository.findAll()
+    override fun get(isbn: String): BookEntity {
+        return bookRepository.findByIdOrNull(isbn) 
     }
 
 }
