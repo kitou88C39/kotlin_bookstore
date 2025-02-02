@@ -1,9 +1,13 @@
 package com.devtiro.bookstore.services.impl
 
-
-import com.devtiro.bookstore.domain.dto.bookSummaryDto
-import com.devtiro.bookstore.domain.entities.AuthorEntity
-import com.devtiro.bookstore.domain.entities.BookEntity
+import com.devtiro.bookstore.testAuthorEntityA
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
+import org.springframework.beans.factory.annoatation.Autowired
+import org.springframework.boot.test.context.Transactional
+import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.database.repository.findByIdOrNull
 
 @SpringBootTest
 @Transactional
