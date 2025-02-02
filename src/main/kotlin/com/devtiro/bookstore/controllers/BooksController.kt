@@ -30,7 +30,13 @@ class BooksController(val BookService: BookService) {
     }
 
     @GetMapping(path = ["/isbn"])
-   fun readOneBooks(@PathVariable("isbn") isbn: String): ResponseEntity<BookSummaryDto> {
+    fun readOneBooks(@PathVariable("isbn") isbn: String): ResponseEntity<BookSummaryDto> {
+        return bookService.get(isbn:)?.let { ResponseEntity(it.toBookSummaryDto(), HttpStatus.OK)}
+        ?: ResponseEntity(HttpStatus.NOT_FOUND)
+    }
+
+    @GetMapping(path = ["/isbn"])
+    fun readOneBooks(@PathVariable("isbn") isbn: String): ResponseEntity<BookSummaryDto> {
         return bookService.get(isbn:)?.let { ResponseEntity(it.toBookSummaryDto(), HttpStatus.OK)}
         ?: ResponseEntity(HttpStatus.NOT_FOUND)
     }
