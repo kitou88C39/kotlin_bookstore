@@ -24,13 +24,14 @@ class BooksController(val BookService: BookService) {
         }
     }
 
-   @GetMapping(path = ["/v1/books"])
+   @GetMapping
    fun readManyBooks(@RequestPram("author")authorId: Long?): List<BookSummaryDto> {
-        return BookService.list(authorId:).map { it.toBookSummaryDto()}
+        return bookService.list(authorId:).map { it.toBookSummaryDto()}
     }
 
-    @GetMapping(path = ["/v1/books"])
-   fun readManyBooks(@RequestPram("author")authorId: Long?): List<BookSummaryDto> {
-        return BookService.list(authorId:).map { it.toBookSummaryDto()}
+    @GetMapping(path = ["/isbn"])
+   fun readOneBooks(@PathVariable("isbn") isbn: String): ResponseEntity<BookSummaryDto> {
+        return bookService.get(isbn:)?.let { ResponseEntity(it.toBookSummaryDto(), HttpStatus.OK)}
+        ?: ResponseEntity(HttpStatus.NOT_FOUND)
     }
 }
