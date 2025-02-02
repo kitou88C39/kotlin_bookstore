@@ -40,7 +40,8 @@ class BooksController(val BookService: BookService) {
         @PathVariable("isbn") isbn: String, 
         @RequestBody BookUpdateRequestDto: BookUpdateRequestDto
     ): ResponseEntity<BookSummaryDto> {
-        return bookService.get(isbn:)?.let { ResponseEntity(it.toBookSummaryDto(), HttpStatus.OK)}
-        ?: ResponseEntity(HttpStatus.NOT_FOUND)
+        try {
+            val updatedBook = bookService.partialUpdate(isbn, bookUpdateRequestDto.toBookUpdateRequest())
+        } catch (ex: IllegalStateException)
     }
 }
