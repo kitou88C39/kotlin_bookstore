@@ -124,4 +124,10 @@ class BookServiceImplTest @Autowired constructor(
         val result = underTest.get(BOOK_A_ISBN)
         assertThat(result).isNull()
     }
+
+    @Test
+    fun `test that get returns null when book not found in the database`(){
+        val result = underTest.get(BOOK_A_ISBN)
+        assertThat(result).isNull()
+    }
 }
