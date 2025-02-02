@@ -36,7 +36,10 @@ class BooksController(val BookService: BookService) {
     }
 
     @PatchMapping(path = ["/isbn"])
-    fun partialUpdateBooks(@PathVariable("isbn") isbn: String): ResponseEntity<BookSummaryDto> {
+    fun partialUpdateBooks(
+        @PathVariable("isbn") isbn: String, 
+        @RequestBody BookUpdateRequestDto: BookUpdateRequestDto
+        ): ResponseEntity<BookSummaryDto> {
         return bookService.get(isbn:)?.let { ResponseEntity(it.toBookSummaryDto(), HttpStatus.OK)}
         ?: ResponseEntity(HttpStatus.NOT_FOUND)
     }
