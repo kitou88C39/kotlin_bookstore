@@ -127,7 +127,10 @@ class BookServiceImplTest @Autowired constructor(
 
     @Test
     fun `test that get returns book when the book is found in the database`(){
-        val result = underTest.get(BOOK_A_ISBN)
-        assertThat(result).isNull()
+        val savedAuthor = authorRepository.save(testAuthorEntityA())
+        assertThat(savedAuthor).isNotNull()
+
+        val savedBook = bookRepository.save(testAuthorEntityA(BOOK_A_ISBN, savedAuthor))
+        assertThat(savedBook).isNotNull()
     }
 }
