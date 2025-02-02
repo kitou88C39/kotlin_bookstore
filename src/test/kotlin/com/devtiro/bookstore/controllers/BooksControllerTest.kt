@@ -189,6 +189,12 @@ class BooksControllerTest @Autowired constructor(
     }
 
     @Test
-    fun `test that readOneBook returns HTTP 404 when no book found`(){
+    fun `test that readOneBook returns book  ane HTTP 200 when book found`(){
+
+        every {
+            bookService.get(any())
+        } answers {
+            null
+        }
     }
 }
