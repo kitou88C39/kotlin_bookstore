@@ -195,7 +195,14 @@ class BooksControllerTest @Autowired constructor(
         every {
             bookService.get(isbn)
         } answers {
-            testBookEntityA(isbn)
+            testBookEntityA(isbn=isbn, testAuthorEntityA(id=1))
+        }
+
+        mockMvc.get("/v1/books/$isbn") {
+            contentType = MediaType.APPLICATION_JSON
+            accept = MediaType.APPLICATION_JSON
+        }.andExpect {
+            status { isNotFound()}
         }
     }
 }
