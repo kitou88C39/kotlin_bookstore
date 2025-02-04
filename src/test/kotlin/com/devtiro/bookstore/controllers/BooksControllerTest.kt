@@ -217,8 +217,16 @@ class BooksControllerTest @Autowired constructor(
         val bookUpdateRequest = BookUpdateRequest(
             title = "A new title",
         )
+
         every {
             bookService.partialUpdate(BOOK_A_ISBN, bookUpdateRequest)
         } throws IllegalStateException()
+
+        mockMvc.get("/v1/books/$isbn") {
+            contentType = MediaType.APPLICATION_JSON
+            accept = MediaType.APPLICATION_JSON
+        }.andExpect {
+            status { isNotFound()}
+        }
     }
 }
