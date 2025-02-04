@@ -211,4 +211,8 @@ class BooksControllerTest @Autowired constructor(
             content { jsonPath ( "$.author.image", equalTo("author-image.jpeg"))}
         }
     }
+
+    @Test
+    fun `test that readOneBook returns book  ane HTTP 200 when book found`(){
+    }
 }
