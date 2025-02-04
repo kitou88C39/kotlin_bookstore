@@ -1,7 +1,7 @@
 package com.devtiro.bookstore.domain.dto
 
 data class BookUpdateRequestDto(
-    var title: String?,
-    var description: String?,
-    var image: String?,
+    var title: String? = null,
+    var description: String? = null,
+    var image: String? = null,
 )
