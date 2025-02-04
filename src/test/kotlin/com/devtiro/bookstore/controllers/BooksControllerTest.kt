@@ -252,7 +252,7 @@ class BooksControllerTest @Autowired constructor(
         every {
             bookService.partialUpdate(BOOK_A_ISBN, bookUpdateRequest)
         } answers {
-
+            BookEntity
         }
 
         mockMvc.patch("/v1/books/$BOOK_A_ISBN") {
@@ -261,6 +261,12 @@ class BooksControllerTest @Autowired constructor(
             content = objectMapper.writeValueAsString(bookUpdateRequestDto)
         }.andExpect {
             status { isBadRequest()}
+            content { jsonPath ( "$.isbn", equalTo(isbn))}
+            content { jsonPath ( "$.title", equalTo(isbn))}
+            content { jsonPath ( "$.image", equalTo("book-image.jpeg"))}
+            content { jsonPath ( "$.author.id", equalTo(1))}
+            content { jsonPath ( "$.author.name", equalTo("John Doe"))}
+            content { jsonPath ( "$.author.image", equalTo("author-image.jpeg"))}
         }
 
     }
