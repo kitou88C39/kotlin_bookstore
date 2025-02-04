@@ -46,6 +46,6 @@ class BookServiceImpl(
             image = bookUpdateRequest.image ?:existingBook.image,
         )
 
-        return bookRepository.save(updatedBook) 
+        return bookRepository.save(updatedBook)
     }
 }
