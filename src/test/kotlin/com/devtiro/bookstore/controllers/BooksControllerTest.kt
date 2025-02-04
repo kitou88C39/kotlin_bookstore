@@ -214,5 +214,10 @@ class BooksControllerTest @Autowired constructor(
 
     @Test
     fun `test that bookPartialUpdate returns a HTTP 400 on IllegalStateException`(){
+        every {
+            bookService.get(isbn)
+        } answers {
+            testBookEntityA(isbn=isbn, testAuthorEntityA(id=1))
+        }
     }
 }
