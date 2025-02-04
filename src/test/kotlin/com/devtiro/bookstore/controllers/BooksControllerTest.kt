@@ -213,6 +213,6 @@ class BooksControllerTest @Autowired constructor(
     }
 
     @Test
-    fun `test that readOneBook returns book  ane HTTP 200 when book found`(){
+    fun `test that bookPartialUpdate returns a HTTP 400 on IllegalStateException`(){
     }
 }
