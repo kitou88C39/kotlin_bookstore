@@ -236,4 +236,6 @@ class BooksControllerTest @Autowired constructor(
             status { isBadRequest()}
         }
     }
+    @Test
+    fun `test that bookPartialUpdate returns a HTTP 400 on IllegalStateException`(){}
 }
