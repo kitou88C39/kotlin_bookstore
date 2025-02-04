@@ -237,5 +237,27 @@ class BooksControllerTest @Autowired constructor(
         }
     }
     @Test
-    fun `test that bookPartialUpdate returns a HTTP 400 on IllegalStateException`(){}
+    fun `test that bookPartialUpdate returns a HTTP 200 and book on a successfu update`(){
+        val title = "A new title",
+        val bookUpdateRequest = BookUpdateRequest(
+            title = title,
+        )
+
+        val bookUpdateRequestDto = BookUpdateRequestDto(
+            title = title,
+        )
+
+        every {
+            bookService.partialUpdate(BOOK_A_ISBN, bookUpdateRequest)
+        } throws IllegalStateException()
+
+        mockMvc.patch("/v1/books/$BOOK_A_ISBN") {
+            contentType = MediaType.APPLICATION_JSON
+            accept = MediaType.APPLICATION_JSON
+            content = objectMapper.writeValueAsString(bookUpdateRequestDto)
+        }.andExpect {
+            status { isBadRequest()}
+        }
+
+    }
 }
