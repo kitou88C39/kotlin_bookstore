@@ -214,12 +214,14 @@ class BooksControllerTest @Autowired constructor(
 
     @Test
     fun `test that bookPartialUpdate returns a HTTP 400 on IllegalStateException`(){
+        
+        val title = "A new title",
         val bookUpdateRequest = BookUpdateRequest(
-            title = "A new title",
+            title = title,
         )
 
-        val bookUpdateRequestDto = BookUpdateRequestDto (
-            title = "A new title",
+        val bookUpdateRequestDto = BookUpdateRequestDto(
+            title = title,
         )
 
         every {
@@ -229,7 +231,7 @@ class BooksControllerTest @Autowired constructor(
         mockMvc.get("/v1/books/$BOOK_A_ISBN") {
             contentType = MediaType.APPLICATION_JSON
             accept = MediaType.APPLICATION_JSON
-            content = 
+            content = objectMapper.writeValueAsString(bookUpdateRequestDto)
         }
     }
 }
