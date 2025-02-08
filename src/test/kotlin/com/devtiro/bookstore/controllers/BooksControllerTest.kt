@@ -327,7 +327,10 @@ class BooksControllerTest @Autowired constructor(
     }
 
     @Test
-    fun `test that bookPartialUpdate returns a HTTP 200 and book on a successful update`(){
-        
+    fun `test that deleteBook deletes a book successfully`(){
+        every {
+            bookService.delete(any())
+        } answers {
+        }
     }
 }
