@@ -198,6 +198,6 @@ class BookServiceImplTest @Autowired constructor(
         underTest.delete(BOOK_A_ISBN)
 
         val result = bookRepository.findByIdOrNull(BOOK_A_ISBN)
-        assertThat(result).isNotNull()
+        assertThat(result).isNull()
     }
 }
