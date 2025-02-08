@@ -187,5 +187,9 @@ class BookServiceImplTest @Autowired constructor(
         val savedBook = bookRepository.save(testAuthorEntityA(BOOK_A_ISBN, savedAuthor))
         assertThat(savedBook).isNotNull()
         
+        underTest.delete(BOOK_A_ISBN)
+
+        val result = bookRepository.findByIdOrNull(BOOK_A_ISBN)
+        assertThat(result).isNotNull()
     }
 }
