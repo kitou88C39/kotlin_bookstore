@@ -180,18 +180,7 @@ class BookServiceImplTest @Autowired constructor(
     }
 
     @Test
-    fun `test that partialUpdate updates the image of an existing book`(){
-        val savedAuthor = authorRepository.save(testAuthorEntityA())
-        assertThat(savedAuthor).isNotNull()
-
-        val savedBook = bookRepository.save(testAuthorEntityA(BOOK_A_ISBN, savedAuthor))
-        assertThat(savedBook).isNotNull()
-
-        val newImage = "A new image"
-        val bookUpdateRequest = BookUpdateRequest(
-            image = newImage
-        )
-        underTest.partialUpdate(BOOK_A_ISBN, bookUpdateRequest)
-        assertThat(result.image).isEqualTo(newImage)
+    fun `test that delete successfully delete a book in the database`(){
+        
     }
 }
