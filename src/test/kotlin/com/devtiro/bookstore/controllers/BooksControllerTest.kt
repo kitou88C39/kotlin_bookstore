@@ -271,8 +271,10 @@ class BooksControllerTest @Autowired constructor(
     }
     @Test
     fun `test that bookPartialUpdate returns a HTTP 400 and book on IllegalStateException`(){
+        
+        title = "A new title",
         val bookUpdateRequest = BookUpdateRequest(
-            title = "A new title",
+            title = title,
         )
 
         val bookUpdateRequestDto = BookUpdateRequestDto(
