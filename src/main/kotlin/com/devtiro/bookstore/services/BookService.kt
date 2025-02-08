@@ -1,7 +1,8 @@
 package com.devtiro.bookstore.services
 
 import com.devtiro.bookstore.domain.BookSummary
-import com.devtiro.bookstore.domain.entity.BookEntity
+import com.devtiro.bookstore.domain.BookUpdateRequest
+import com.devtiro.bookstore.domain.entities.BookEntity
 
 interface BookService {
 
@@ -12,4 +13,6 @@ interface BookService {
     fun get(isbn: String): BookEntity?
 
     fun partialUpdate(isbn: String, BookUpdateRequestDto: BookUpdateRequestDto): BookEntity
+
+    fun delete(isbn: String): Unit
 }
