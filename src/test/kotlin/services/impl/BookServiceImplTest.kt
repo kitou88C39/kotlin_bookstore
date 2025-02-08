@@ -136,4 +136,6 @@ class BookServiceImplTest @Autowired constructor(
         val result = underTest.get(savedAuthor.isbn)
         assertThat(result).isEqualTo(savedBook)
     }
+    @Test
+    fun `test that get returns book when the book is found in the database`(){}
 }
