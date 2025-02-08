@@ -11,7 +11,6 @@ import jakarta.transaction.Transactional
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Services
 
-
 @Services
 class BookServiceImpl(
     val bookRepository: bookRepository,
@@ -50,5 +49,9 @@ class BookServiceImpl(
         )
 
         return bookRepository.save(updatedBook)
+    }
+
+    override fun delete(isbn: String){
+        bookRepository.deleteById(isbn)
     }
 }
