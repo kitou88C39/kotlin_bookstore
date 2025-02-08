@@ -159,5 +159,6 @@ class BookServiceImplTest @Autowired constructor(
         )
 
         underTest.partialUpdate(BOOK_A_ISBN, bookUpdateRequest)
+        assertThat(result.title).isEqualTo("???")
     }
 }
