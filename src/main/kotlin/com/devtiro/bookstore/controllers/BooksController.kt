@@ -49,11 +49,7 @@ class BooksController(val BookService: BookService) {
     }
 
     @DeleteMapping(path = ["/isbn"])
-    fun deleteBooks(@PathVariable("isbn") isbn: String): ResponseEntity<BookSummaryDto> {
-        try {
-            val updatedBook = bookService.partialUpdate(isbn, bookUpdateRequestDto.toBookUpdateRequest())
-            return ResponseEntity(updatedBook.toAuthorSummaryDto(),HttpStatus.OK)
-        } catch (ex: IllegalStateException)
-            return ResponseEntity(HttpStatus.BAD_REQUEST)
+    fun deleteBooks(@PathVariable("isbn") isbn: String): ResponseEntity<Unit> {
+        
     }
     
