@@ -180,18 +180,18 @@ class BookServiceImplTest @Autowired constructor(
     }
 
     @Test
-    fun `test that partialUpdate updates the description of an existing book`(){
+    fun `test that partialUpdate updates the image of an existing book`(){
         val savedAuthor = authorRepository.save(testAuthorEntityA())
         assertThat(savedAuthor).isNotNull()
 
         val savedBook = bookRepository.save(testAuthorEntityA(BOOK_A_ISBN, savedAuthor))
         assertThat(savedBook).isNotNull()
 
-        val newDescription = "A new description"
+        val newImage = "A new image"
         val bookUpdateRequest = BookUpdateRequest(
-            description = newDescription
+            image = newImage
         )
         underTest.partialUpdate(BOOK_A_ISBN, bookUpdateRequest)
-        assertThat(result.description).isEqualTo(newDescription)
+        assertThat(result.image).isEqualTo(newImage)
     }
 }
