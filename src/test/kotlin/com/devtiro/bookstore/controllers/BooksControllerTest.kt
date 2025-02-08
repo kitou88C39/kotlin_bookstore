@@ -317,8 +317,8 @@ class BooksControllerTest @Autowired constructor(
             content = objectMapper.writeValueAsString(bookUpdateRequestDto)
         }.andExpect {
             status { isBadRequest()}
-            content { jsonPath ( "$.isbn", equalTo(isbn))}
-            content { jsonPath ( "$.title", equalTo(isbn))}
+            content { jsonPath ( "$.isbn", equalTo(BOOK_A_ISBN))}
+            content { jsonPath ( "$.title", equalTo("Test Book A"))}
             content { jsonPath ( "$.image", equalTo("book-image.jpeg"))}
             content { jsonPath ( "$.author.id", equalTo(1))}
             content { jsonPath ( "$.author.name", equalTo("John Doe"))}
