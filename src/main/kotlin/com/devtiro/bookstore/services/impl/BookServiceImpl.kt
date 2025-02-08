@@ -1,12 +1,15 @@
 package com.devtiro.bookstore.services.impl
 
 import com.devtiro.bookstore.domain.BookSummary
+import com.devtiro.bookstore.domain.BookUpdateRequest
 import com.devtiro.bookstore.domain.entities.BookEntity
 import com.devtiro.bookstore.repository.AuthorRepository
 import com.devtiro.bookstore.repository.BookRepository
 import com.devtiro.bookstore.services.BookService
 import com.devtiro.bookstore.toBookEntity
+import jakarta.transaction.Transactional
 import org.springframework.data.repository.findByIdOrNull
+import org.springframework.stereotype.Services
 
 
 @Services
