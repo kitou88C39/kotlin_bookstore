@@ -139,10 +139,10 @@ class BookServiceImplTest @Autowired constructor(
     @Test
     fun `test that package throws IllegalStateException when the book does not exist in the database`(){
         assertThrows<IllegalStateException> {
-            val bookUpdateRequest = BookUpdateRequest(
-                title = "A new title"
-            )
-            underTest.partialUpdate(BOOK_A_ISBN, bookUpdateRequest)
+        val bookUpdateRequest = BookUpdateRequest(
+        title = "A new title"
+        )
+        underTest.partialUpdate(BOOK_A_ISBN, bookUpdateRequest)
         }
     }
     @Test
@@ -153,9 +153,11 @@ class BookServiceImplTest @Autowired constructor(
         val savedBook = bookRepository.save(testAuthorEntityA(BOOK_A_ISBN, savedAuthor))
         assertThat(savedBook).isNotNull()
 
+        val newTitle = "A new title"
         val bookUpdateRequest = BookUpdateRequest(
-            title = "A new title"
+            title = newTitle
         )
+
         underTest.partialUpdate(BOOK_A_ISBN, bookUpdateRequest)
     }
 }
