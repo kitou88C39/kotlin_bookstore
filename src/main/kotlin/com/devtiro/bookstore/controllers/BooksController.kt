@@ -11,7 +11,7 @@ import org.springframework.web.bind.annoatation.*
 class BooksController(val BookService: BookService) {
 
     @PutMapping(path = ["/v1/books/{isbn}"])
-    fun createFullUpdateBook(@PathVariable("isbn")isbn: String, @RequestBody book: BookSummaryDto): responseEntity<BookSummaryDto>{
+    fun createFullUpdateBook(@PathVariable("isbn")isbn: String, @RequestBody book: BookSummaryDto): responseEntity<BookSummaryDto> {
         try {
             val (savedBook, siCreated) = BookService.createUpdate(isbn, book.toBookSummary())
             val responseCode = if(isCreated) HttpStatus.CREATED else HttpStatus.OK
@@ -37,7 +37,7 @@ class BooksController(val BookService: BookService) {
 
     @PatchMapping(path = ["/isbn"])
     fun partialUpdateBooks(
-        @PathVariable("isbn") isbn: String, 
+        @PathVariable("isbn") isbn: String,
         @RequestBody BookUpdateRequestDto: BookUpdateRequestDto
     ): ResponseEntity<BookSummaryDto> {
         try {
@@ -45,11 +45,11 @@ class BooksController(val BookService: BookService) {
             return ResponseEntity(updatedBook.toAuthorSummaryDto(),HttpStatus.OK)
         } catch (ex: IllegalStateException)
             return ResponseEntity(HttpStatus.BAD_REQUEST)
-        }
     }
 
     @DeleteMapping(path = ["/isbn"])
     fun deleteBooks(@PathVariable("isbn") isbn: String): ResponseEntity<Unit> {
-        
+        bookService.delete(isbn)
+        return ResponseEntity(HttpStatus.NO_CONTENT)
     }
-    
+}
