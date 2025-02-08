@@ -277,5 +277,10 @@ class BooksControllerTest @Autowired constructor(
         every {
             bookService.partialUpdate(BOOK_A_ISBN, bookUpdateRequest)
         } throws IllegalStateException()
+
+        mockMvc.patch("/v1/books/$BOOK_A_ISBN") {
+            contentType = MediaType.APPLICATION_JSON
+            accept = MediaType.APPLICATION_JSON
+        }
     }
 }
