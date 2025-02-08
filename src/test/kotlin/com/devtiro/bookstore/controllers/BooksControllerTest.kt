@@ -325,4 +325,9 @@ class BooksControllerTest @Autowired constructor(
             content { jsonPath ( "$.author.image", equalTo("author-image.jpeg"))}
         }
     }
+
+    @Test
+    fun `test that bookPartialUpdate returns a HTTP 200 and book on a successful update`(){
+        
+    }
 }
