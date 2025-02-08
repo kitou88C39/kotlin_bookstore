@@ -138,11 +138,20 @@ class BookServiceImplTest @Autowired constructor(
     }
     @Test
     fun `test that package throws IllegalStateException when the book does not exist in the database`(){
-        assertThrows<IllegalArgumentException> {
+        assertThrows<IllegalStateException> {
             val bookUpdateRequest = BookUpdateRequest(
                 title = "A new title"
             )
             underTest.partialUpdate(BOOK_A_ISBN, bookUpdateRequest)
         }
     }
+    @Test
+    fun `test that package throws IllegalStateException when the book does not exist in the database`(){
+        assertThrows<IllegalStateException> {
+            val bookUpdateRequest = BookUpdateRequest(
+                title = "A new title"
+            )
+            underTest.partialUpdate(BOOK_A_ISBN, bookUpdateRequest)
+        }
+    }   
 }
