@@ -285,18 +285,12 @@ class BooksControllerTest @Autowired constructor(
             bookService.partialUpdate(BOOK_A_ISBN, bookUpdateRequest)
         } throws IllegalStateException()
 
-        mockMvc.get("/v1/books/$BOOK_A_ISBN") {
+        mockMvc.patch("/v1/books/$BOOK_A_ISBN") {
             contentType = MediaType.APPLICATION_JSON
             accept = MediaType.APPLICATION_JSON
             content = objectMapper.writeValueAsString(bookUpdateRequestDto)
         }.andExpect {
             status { isBadRequest()}
-            content { jsonPath ( "$.isbn", equalTo(isbn))}
-            content { jsonPath ( "$.title", equalTo(isbn))}
-            content { jsonPath ( "$.image", equalTo("book-image.jpeg"))}
-            content { jsonPath ( "$.author.id", equalTo(1))}
-            content { jsonPath ( "$.author.name", equalTo("John Doe"))}
-            content { jsonPath ( "$.author.image", equalTo("author-image.jpeg"))}
         }
     }
 }
