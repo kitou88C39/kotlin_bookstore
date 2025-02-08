@@ -45,6 +45,18 @@ class BooksController(val BookService: BookService) {
             return ResponseEntity(updatedBook.toAuthorSummaryDto(),HttpStatus.OK)
         } catch (ex: IllegalStateException)
             return ResponseEntity(HttpStatus.BAD_REQUEST)
-    
+        }
     }
-}
+
+    @PatchMapping(path = ["/isbn"])
+    fun partialUpdateBooks(
+        @PathVariable("isbn") isbn: String, 
+        @RequestBody BookUpdateRequestDto: BookUpdateRequestDto
+    ): ResponseEntity<BookSummaryDto> {
+        try {
+            val updatedBook = bookService.partialUpdate(isbn, bookUpdateRequestDto.toBookUpdateRequest())
+            return ResponseEntity(updatedBook.toAuthorSummaryDto(),HttpStatus.OK)
+        } catch (ex: IllegalStateException)
+            return ResponseEntity(HttpStatus.BAD_REQUEST)
+    }
+    
