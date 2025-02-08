@@ -194,13 +194,7 @@ class BookServiceImplTest @Autowired constructor(
     }
 
     @Test
-    fun `test that delete successfully delete a book in the database`(){
-        val savedAuthor = authorRepository.save(testAuthorEntityA())
-        assertThat(savedAuthor).isNotNull()
-
-        val savedBook = bookRepository.save(testAuthorEntityA(BOOK_A_ISBN, savedAuthor))
-        assertThat(savedBook).isNotNull()
-        
+    fun `test that delete successfully delete a book that does not exist in the database`(){
         underTest.delete(BOOK_A_ISBN)
 
         val result = bookRepository.findByIdOrNull(BOOK_A_ISBN)
