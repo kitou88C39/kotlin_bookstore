@@ -237,7 +237,7 @@ class BooksControllerTest @Autowired constructor(
         }
     }
     @Test
-    fun `test that bookPartialUpdate returns a HTTP 200 and book on a successfu update`(){
+    fun `test that bookPartialUpdate returns a HTTP 200 and book on a successful update`(){
         val title = "A new title",
         val bookUpdateRequest = BookUpdateRequest(
             title = title,
@@ -294,7 +294,7 @@ class BooksControllerTest @Autowired constructor(
         }
     }
     @Test
-    fun `test that bookPartialUpdate returns a HTTP 400 and book on IllegalStateException`(){
+    fun `test that bookPartialUpdate returns a HTTP 200 and book on a successful update`(){
         
         title = "A new title",
     }
