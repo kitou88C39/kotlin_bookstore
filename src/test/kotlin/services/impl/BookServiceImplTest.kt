@@ -153,9 +153,9 @@ class BookServiceImplTest @Autowired constructor(
         val savedBook = bookRepository.save(testAuthorEntityA(BOOK_A_ISBN, savedAuthor))
         assertThat(savedBook).isNotNull()
 
-        title = "A new title",
         val bookUpdateRequest = BookUpdateRequest(
-            title = title,
+            title = "A new title"
         )
+        underTest.partialUpdate(BOOK_A_ISBN, bookUpdateRequest)
     }
 }
