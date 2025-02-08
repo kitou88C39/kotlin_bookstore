@@ -329,14 +329,14 @@ class BooksControllerTest @Autowired constructor(
     @Test
     fun `test that deleteBook deletes a book successfully`(){
         every {
-            bookService.delete(any())
+            bookService.delete(BOOK_A_ISBN)
         } answers {
         }
-        mockMvc.patch("/v1/books/$BOOK_A_ISBN") {
+
+        mockMvc.delete("/v1/books/$BOOK_A_ISBN") {
             contentType = MediaType.APPLICATION_JSON
             accept = MediaType.APPLICATION_JSON
-            content = objectMapper.writeValueAsString(bookUpdateRequestDto)
         }.andExpect {
-            status { isBadRequest()}
+            status { isOK()}
     }
 }
